@@ -33,6 +33,7 @@ in
     font = "ter-v32n";
     packages = with pkgs; [ terminus_font ];
   };
+  virtualisation.libvirtd.enable = true;
 
   networking.hostName = "nixos";                                    #NETWORKING
   networking.enableIPv6 = true;
@@ -67,6 +68,7 @@ in
 
   users.users.patrickaldis = {                                      #USERS
     isNormalUser = true;
+    initialPassword = "password";
     description = "Patrick Aldis";
     extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
