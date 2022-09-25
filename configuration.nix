@@ -65,6 +65,16 @@ in
     GDK_SCALE="2";
     EDITOR="nvim";
   };
+  services.xserver = {
+    enable = true;
+    displayManager = {
+      sessionPackages = [ pkgs.gnome.gnome-session.sessions ];
+      gdm = {
+        enable = true;
+        wayland = true;
+      };
+    };
+  };
 
   users.users.patrickaldis = {                                      #USERS
     isNormalUser = true;
