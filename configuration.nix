@@ -96,8 +96,13 @@ in
 
   home-manager.users.patrickaldis = {
     home.homeDirectory = "/home/patrickaldis";
-    home.packages = with pkgs; [ git lutris];
+    home.packages = with pkgs; [ git lutris emacs];
     home.stateVersion = "22.05";
+    
+    xdg.configFile = {
+      "hypr/hyprland.conf".source = ./xdgconf/hyprland.conf;
+      "waybar".source = ./xdgconf/waybar;
+    };
   };
  
   environment.systemPackages = with pkgs; [
