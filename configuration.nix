@@ -105,6 +105,14 @@ in
     };
   };
  
+  nixpkgs.overlays = [
+    (self: super: {
+      waybar-hyprland = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
   killall
   firefox
@@ -116,16 +124,15 @@ in
   openvpn
   xorg.xeyes
   xorg.xprop
-  git
   google-chrome
   lxappearance
   wofi
   rofi
   gnome.nautilus
   gnome.adwaita-icon-theme
-  waybar
   stow
   vscode
+  waybar-hyprland
   kitty
   ];
 
