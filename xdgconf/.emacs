@@ -1,0 +1,36 @@
+(require 'magit)
+(require 'projectile)
+(require 'treemacs)
+(require 'all-the-icons)
+(require 'doom-modeline)
+(require 'treemacs-all-the-icons)
+(require 'vterm)
+(require 'lsp-mode)
+
+(setq evil-want-keybinding nil)
+(require 'evil-collection)
+(evil-collection-init)
+
+(require 'evil)
+(evil-mode 1)
+
+(set-face-attribute 'default t :font "JetBrainsMono Nerd Font Mono" )
+(pixel-scroll-precision-mode 1)
+(setq inhibit-startup-message t)
+(setq scroll-conservatively 101)
+(global-hl-line-mode 1)
+(set-default 'truncate-lines 0)
+
+(doom-modeline-mode 1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(load-theme 'dracula t)
+(treemacs-load-theme "all-the-icons")
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(require 'evil-leader)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
+(require 'nix-mode)
+(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
