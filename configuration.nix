@@ -3,17 +3,19 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }: let
-  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  hyprland = (import flake-compat {
-    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  }).defaultNix;
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  # flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+  # hyprland = (import flake-compat {
+  #   src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+  # }).defaultNix;
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/a7f0cc2d7b271b4a5df9b9e351d556c172f7e903/master.tar.gz";
+    sha256="0ydkwprdkiq3xjkqf8j7spwaaaxhdm2ka2ylkzycfz49id4fb2q2";
+  };
 in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      hyprland.nixosModules.default
       (import "${home-manager}/nixos")
     ];
   
@@ -84,10 +86,6 @@ in
     packages = with pkgs; [];
   };
 
-  programs.hyprland = {                                             #USER-SPECIFIC ( WILL CHANGE )
-    enable = true;
-    package = hyprland.packages.${pkgs.system}.default;
-  };
   programs.light.enable = true;
   services.flatpak.enable = true;
   fonts.fonts = with pkgs; [
@@ -111,6 +109,10 @@ in
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       });
     })
+    (import (builtins.fetchTarball {
+      url = "https://github.com/nix-community/emacs-overlay/archive/99f607199684071fef8e8a411d4e5d862cd5647a/master.tar.gz";
+      sha256 = "04sf1sfia8s2whkmd90hgqmxyyyqaj13cqzsj8jwzp652xygvgk0";
+    }))
   ];
 
   environment.systemPackages = with pkgs; [
