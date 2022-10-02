@@ -11,6 +11,14 @@
     url = "https://github.com/nix-community/home-manager/archive/a7f0cc2d7b271b4a5df9b9e351d556c172f7e903/master.tar.gz";
     sha256="0ydkwprdkiq3xjkqf8j7spwaaaxhdm2ka2ylkzycfz49id4fb2q2";
   };
+  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
+    url = https://github.com/vlaci/nix-doom-emacs/archive/fee14d217b7a911aad507679dafbeaa8c1ebf5ff/master.tar.gz;
+    sha256 = "1g0izscjh5nv4n0n1m58jc6z27i9pkbxs17mnb05a83ffdbmmva6";
+  })
+  {
+    doomPrivateDir = ./xdgconf/doom.d;
+  };  # Directory containing your config.el init.el
+                                # and packages.el files
 in
 {
   imports =
@@ -26,14 +34,16 @@ in
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
     experimental-features = [ "nix-command" "flakes" ];
   };
-  #nix.nixPath = [ "nixos-config=/home/patrickaldis/.nixrepo/configuration.nix" "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" "/nix/var/nix/profiles/per-user/root/channels"];
 
-  boot.loader.efi.canTouchEfiVariables = true;                      #BOOT
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.systemd-boot = {
-    enable = true;
-    consoleMode = "1";
+  boot.loader = {
+    efi.canTouchEfiVariables = true;                      #BOOT
+    efi.efiSysMountPoint = "/boot/efi";
+    systemd-boot = {
+      enable = true;
+      consoleMode = "1";
+    };
   };
+
   console= {
     earlySetup = true;
     font = "ter-v32n";
@@ -41,9 +51,11 @@ in
   };
   virtualisation.libvirtd.enable = true;
 
-  networking.hostName = "nixos";                                    #NETWORKING
-  networking.enableIPv6 = true;
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";                                    #NETWORKING
+    enableIPv6 = true;
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/London";                                  #LOCALE
   i18n.defaultLocale = "en_GB.utf8";
@@ -98,9 +110,12 @@ in
 
   home-manager.users.patrickaldis = {
     home.homeDirectory = "/home/patrickaldis";
-    home.packages = with pkgs; [ git lutris emacs];
+    home.packages = with pkgs; [ git lutris doom-emacs];
     home.stateVersion = "22.05";
-    
+    home.file.".emacs.d/init.el".text = ''
+      (load "default.el")
+    '';   # Directory containing your config.el init.el
+    # home.file.".emacs".source = ./xdgconf/.emacs;
     xdg.configFile = {
       "hypr/hyprland.conf".source = ./xdgconf/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;
@@ -120,6 +135,22 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
+  # ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
+  #   vterm
+  #   magit
+  #   doom-modeline
+  #   evil
+  #   evil-leader
+  #   evil-collection
+  #   dracula-theme
+  #   projectile
+  #   treemacs
+  #   all-the-icons
+  #   treemacs-all-the-icons
+  #   lsp-mode
+  #   nix-mode
+  # ]))
+  spotify
   killall
   firefox
   neovim
