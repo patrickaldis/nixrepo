@@ -3,22 +3,10 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }: let
-  # flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  # hyprland = (import flake-compat {
-  #   src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-  # }).defaultNix;
-  home-manager = builtins.fetchTarball {
+ home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/a7f0cc2d7b271b4a5df9b9e351d556c172f7e903/master.tar.gz";
     sha256="0ydkwprdkiq3xjkqf8j7spwaaaxhdm2ka2ylkzycfz49id4fb2q2";
   };
-  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/vlaci/nix-doom-emacs/archive/fee14d217b7a911aad507679dafbeaa8c1ebf5ff/master.tar.gz;
-    sha256 = "1g0izscjh5nv4n0n1m58jc6z27i9pkbxs17mnb05a83ffdbmmva6";
-  })
-  {
-    doomPrivateDir = ./xdgconf/doom.d;
-  };  # Directory containing your config.el init.el
-                                # and packages.el files
 in
 {
   imports =
@@ -82,6 +70,7 @@ in
     #XCURSOR_SIZE="64";
     GDK_SCALE="2";
     EDITOR="nvim";
+    fish_greeting="";
   };
   services.xserver = {
     enable = true;
@@ -110,12 +99,8 @@ in
 
   home-manager.users.patrickaldis = {
     home.homeDirectory = "/home/patrickaldis";
-    home.packages = with pkgs; [ git lutris doom-emacs];
+    home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
-    home.file.".emacs.d/init.el".text = ''
-      (load "default.el")
-    '';   # Directory containing your config.el init.el
-    # home.file.".emacs".source = ./xdgconf/.emacs;
     xdg.configFile = {
       "hypr/hyprland.conf".source = ./xdgconf/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;
@@ -135,21 +120,12 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-  # ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
-  #   vterm
-  #   magit
-  #   doom-modeline
-  #   evil
-  #   evil-leader
-  #   evil-collection
-  #   dracula-theme
-  #   projectile
-  #   treemacs
-  #   all-the-icons
-  #   treemacs-all-the-icons
-  #   lsp-mode
-  #   nix-mode
-  # ]))
+  ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
+    libvterm
+    vterm
+  ]))
+  ripgrep
+  cmake
   spotify
   killall
   firefox
