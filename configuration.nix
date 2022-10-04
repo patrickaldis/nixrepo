@@ -140,12 +140,8 @@ in
     '';
   };
   in with pkgs; [
-  ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
-    libvterm
-    vterm
-  ]))
-  ripgrep
-  nordvpn
+    ripgrep
+  # nordvpn
   wget
   cmake
   spotify
@@ -170,6 +166,11 @@ in
   vscode
   waybar-hyprland
   kitty
+  ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
+    libvterm
+    vterm
+  ]))
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -185,7 +186,10 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  services.emacs.enable = true;
+  services.emacs= {
+    package = pkgs.emacsPgtkNativeComp;
+    enable = true;
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
