@@ -41,7 +41,7 @@ in
 
   networking = {
     hostName = "nixos";                                    #NETWORKING
-    enableIPv6 = true;
+    enableIPv6 = false;
     networkmanager.enable = true;
   };
 
@@ -119,14 +119,37 @@ in
     }))
   ];
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = let
+  nordvpn = pkgs.stdenv.mkDerivation rec {
+    name = "nordvpn";
+    src = builtins.fetchurl {
+      url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.14.2_amd64.deb";
+      sha256 = "1alqh0bzz4y9dpfw8mmg7aa8ffnz46r2gjh3zdbhap3rfkycyxk8";
+    };
+    unpackCmd = "${pkgs.dpkg}/bin/dpkg-deb -x $curSrc .";
+    nativeBuildInputs = with pkgs; [
+      autoPatchelfHook
+    ];
+    builtInputs = with pkgs; [
+    ];
+    runtimeDependencies = [
+    ];
+    installPhase = ''
+      mkdir -p $out
+      cp -r . $out/
+    '';
+  };
+  in with pkgs; [
   ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
     libvterm
     vterm
   ]))
   ripgrep
+  nordvpn
+  wget
   cmake
   spotify
+  libappindicator
   killall
   firefox
   neovim
