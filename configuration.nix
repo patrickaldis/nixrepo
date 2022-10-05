@@ -71,6 +71,7 @@ in
     GDK_SCALE="2";
     EDITOR="nvim";
     fish_greeting="";
+    XDG_CURRENT_DESKTOP="Unity";
   };
   services.xserver = {
     enable = true;
@@ -102,8 +103,9 @@ in
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
     xdg.configFile = {
-      "hypr/hyprland.conf".source = ./xdgconf/hyprland.conf;
+      "hypr/hyprland.conf".source = ./xdgconf/hyprland/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;
+      "wofi/style.css".source = ./xdgconf/wofi/style.css;
     };
   };
  
@@ -144,9 +146,13 @@ in
   # nordvpn
   wget
   cmake
+  swayidle
+  mailspring
   spotify
-  libappindicator
   killall
+  libappindicator-gtk3
+  libayatana-appindicator
+  libappindicator-gtk2
   firefox
   neovim
   discord
@@ -157,7 +163,6 @@ in
   xorg.xeyes
   xorg.xprop
   google-chrome
-  lxappearance
   wofi
   rofi
   gnome.nautilus
@@ -166,6 +171,9 @@ in
   vscode
   waybar-hyprland
   kitty
+  xdg-desktop-portal
+  xdg-desktop-portal-gtk
+  xdg-desktop-portal-wlr
   ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
     libvterm
     vterm
@@ -185,10 +193,15 @@ in
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
+  services.gnome.gnome-keyring.enable = true;
   services.emacs= {
     package = pkgs.emacsPgtkNativeComp;
     enable = true;
+  };
+  services.gnome3.at-spi2-core.enable = true;
+  services.davmail = {
+    enable = true;
+    url = "https://outlook.office365.com/EWS/Exchange.asmx";
   };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -203,5 +216,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
-
 }

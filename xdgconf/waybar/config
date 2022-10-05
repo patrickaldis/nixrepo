@@ -1,6 +1,6 @@
 {
     "modules-left": ["wlr/workspaces"],
-    "modules-center": ["clock", "custom/waybar-mpris"],
+    "modules-center": ["clock"], //"custom/waybar-mpris"],
     /* "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"], */
     "modules-right": ["tray","network", "pulseaudio", "battery", "custom/power"],
     "layer": "top",
@@ -27,7 +27,8 @@
         "spacing": 10
     },
     "clock": {
-        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M  %b %d}",
         // "format-alt": "{:%Y-%m-%d}"
 		"on-click": "gnome-calendar"
     },
