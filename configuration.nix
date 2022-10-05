@@ -105,7 +105,7 @@ in
     xdg.configFile = {
       "hypr/hyprland.conf".source = ./xdgconf/hyprland/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;
-      "wofi/style.css".source = ./xdgconf/wofi/style.css;
+      "wofi".source = ./xdgconf/wofi;
     };
   };
  

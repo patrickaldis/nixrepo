@@ -1,7 +1,9 @@
 window {
 margin: 0px;
-border: 1px solid #bd93f9;
+border: 2px solid #fa768b;
 background-color: #282a36;
+font-family: JetBrainsMono Nerd Font Mono;
+border-radius: 10px;
 }
 
 #input {
@@ -10,17 +12,21 @@ border: none;
 color: #f8f8f2;
 background-color: #44475a;
 }
+#input:selected {
+    border: none;
+}
+
 
 #inner-box {
 margin: 5px;
 border: none;
-background-color: #282a36;
+background-color: #282A2E;
 }
 
 #outer-box {
 margin: 5px;
 border: none;
-background-color: #282a36;
+background-color: #282A2E;
 }
 
 #scroll {
@@ -36,4 +42,5 @@ color: #f8f8f2;
 
 #entry:selected {
 background-color: #44475a;
+border-radius: 5px;
 }
