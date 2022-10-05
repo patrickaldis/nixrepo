@@ -164,7 +164,6 @@ in
   xorg.xprop
   google-chrome
   wofi
-  rofi
   gnome.nautilus
   gnome.adwaita-icon-theme
   stow
