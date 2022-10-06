@@ -81,7 +81,7 @@ window#waybar {
     color: #FA768B;
 }
 #pulseaudio.muted {
-    color: #cc3436;
+    color: #FA768B;
 }
 #battery.charging {
     color: #FA768B;
