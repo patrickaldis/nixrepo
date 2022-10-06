@@ -106,6 +106,10 @@ in
       "waybar".source = ./xdgconf/waybar;
       "wofi".source = ./xdgconf/wofi;
     };
+
+    services.dunst = {
+      enable = true;
+    };
   };
  
   nixpkgs.overlays = [
@@ -148,6 +152,7 @@ in
   swayidle
   mailspring
   neofetch
+  pulseaudio
   spotify
   killall
   libappindicator-gtk3
