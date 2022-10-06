@@ -71,7 +71,6 @@ in
     GDK_SCALE="2";
     EDITOR="nvim";
     fish_greeting="";
-    XDG_CURRENT_DESKTOP="Unity";
   };
   services.xserver = {
     enable = true;
@@ -148,6 +147,7 @@ in
   cmake
   swayidle
   mailspring
+  neofetch
   spotify
   killall
   libappindicator-gtk3
