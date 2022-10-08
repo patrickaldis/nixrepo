@@ -1,6 +1,6 @@
 {
     "modules-left": ["wlr/workspaces"],
-    "modules-center": ["clock"], //"custom/waybar-mpris"],
+    "modules-center": ["clock" , "custom/waybar-mpris"],
     /* "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"], */
     "modules-right": ["tray","network", "pulseaudio", "battery", "custom/power"],
     "layer": "top",
@@ -44,12 +44,11 @@
         "format-source-muted": "",
         "format-icons": {
             "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
-            "bluez_output.FC_58_FA_00_BA_F7.a2dp-sink": "",
             "headphone": "",
             "hands-free": "",
             "headset": "",
             "phone": "",
-            "portable": "",
+            "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
@@ -71,8 +70,8 @@
     },
     "custom/waybar-mpris": {
     "return-type": "json",
-    "exec": "waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST'",
-    "on-click": "waybar-mpris --send toggle",
+    "exec": "./.config/waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST'",
+    "on-click": "./.config/waybar-mpris --send toggle",
     // This option will switch between players on right click.
         "on-click-right": "waybar-mpris --send player-next",
     // The options below will switch the selected player on scroll
