@@ -60,6 +60,9 @@ window#waybar {
 #mode,
 #custom-power,
 #custom-menu,
+#custom-waybar-mpris {
+    padding: 0 10px;
+}
 #idle_inhibitor {
     padding: 0 10px;
     font-size: 15px;
