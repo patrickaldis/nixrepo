@@ -92,12 +92,20 @@ in
   };
 
   programs.light.enable = true;
+
   services.flatpak.enable = true;
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["JetBrainsMono"]; })
   ];
 
   home-manager.users.patrickaldis = {
+    programs.firefox = {
+      enable = true;
+      package = pkgs.firefox.override {
+        cfg = { enableTridactylNative = true; };
+      };
+    };
+
     home.homeDirectory = "/home/patrickaldis";
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
@@ -105,6 +113,7 @@ in
       "hypr/hyprland.conf".source = ./xdgconf/hyprland/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;
       "wofi".source = ./xdgconf/wofi;
+      "dunst".source = ./xdgconf/dunst;
     };
 
     services.dunst = {
@@ -150,6 +159,7 @@ in
   wget
   cmake
   swayidle
+  playerctl
   mailspring
   neofetch
   pulseaudio
@@ -158,7 +168,6 @@ in
   libappindicator-gtk3
   libayatana-appindicator
   libappindicator-gtk2
-  firefox
   neovim
   discord
   pavucontrol
@@ -175,6 +184,7 @@ in
   vscode
   waybar-hyprland
   kitty
+  tridactyl-native
   xdg-desktop-portal
   xdg-desktop-portal-gtk
   xdg-desktop-portal-wlr
