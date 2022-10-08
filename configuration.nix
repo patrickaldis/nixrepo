@@ -157,6 +157,7 @@ in
     ripgrep
   # nordvpn
   wget
+  gnome.zenity
   cmake
   swayidle
   playerctl
@@ -165,9 +166,7 @@ in
   pulseaudio
   spotify
   killall
-  libappindicator-gtk3
-  libayatana-appindicator
-  libappindicator-gtk2
+  libappindicator
   neovim
   discord
   pavucontrol
