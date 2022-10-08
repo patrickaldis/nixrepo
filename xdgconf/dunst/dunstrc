@@ -104,7 +104,7 @@
     #  * foreground: use the same color as the foreground;
     #  * frame: use the same color as the frame;
     #  * anything else will be interpreted as a X color.
-    separator_color = frame
+    separator_color = "#5a5f69"
 
     # Sort messages by urgency.
     sort = yes
