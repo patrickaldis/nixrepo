@@ -29,7 +29,7 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%H:%M  %b %d}",
+        "format": "{:%R  %B %d}",
         // "format-alt": "{:%Y-%m-%d}"
 		"on-click": "gnome-calendar"
     },
@@ -43,7 +43,6 @@
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
-            "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
             "headphone": "",
             "hands-free": "",
             "headset": "",
@@ -57,7 +56,7 @@
     },
 	"custom/power": {
 		"format": "",
-		"on-click": "hyprctl dispatch exit * && pkill -KILL -u patrickaldis", //"swaynag -t BlackPink -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Restart' 'shutdown -r now' -b 'Shutdown'  'shutdown -h now'"
+		"on-click": "sh ~/.config/waybar/logout"
 	},
     "custom/scratchpad-indicator": {
         "format-text": "{}",
@@ -72,6 +71,7 @@
     "return-type": "json",
     "exec": "~/.config/waybar/waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST'",
     "on-click": "~/.config/waybar/waybar-mpris --send toggle",
+    //"on-click-middle": "Hyprctl dispatch focuswindow ''",
     // This option will switch between players on right click.
         "on-click-right": "waybar-mpris --send player-next",
     // The options below will switch the selected player on scroll
