@@ -184,6 +184,7 @@ in
   waybar-hyprland
   kitty
   tridactyl-native
+  wlsunset
   xdg-desktop-portal
   xdg-desktop-portal-gtk
   xdg-desktop-portal-wlr
