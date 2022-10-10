@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: let
+{ config, pkgs, inputs, ... }: let
  home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/a7f0cc2d7b271b4a5df9b9e351d556c172f7e903/master.tar.gz";
     sha256="0ydkwprdkiq3xjkqf8j7spwaaaxhdm2ka2ylkzycfz49id4fb2q2";
@@ -13,6 +13,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       (import "${home-manager}/nixos")
+      inputs.spicetify-nix.homeManagerModule
     ];
   
   #DEVICE CONFIGURATION
@@ -119,7 +120,22 @@ in
     services.dunst = {
       enable = true;
     };
-  };
+    programs.spicetify =
+            {
+              enable = true;
+              theme = "catppuccin-mocha";
+              # OR
+              # theme = spicetify-nix.pkgSets.${pkgs.system}.themes.catppuccin-mocha;
+              colorScheme = "flamingo";
+
+              enabledExtensions = [
+                "fullAppDisplay.js"
+                "shuffle+.js"
+                "hidePodcasts.js"
+              ];
+            };
+        };
+
  
   nixpkgs.overlays = [
     (self: super: {
@@ -133,29 +149,8 @@ in
     }))
   ];
 
-  environment.systemPackages = let
-  nordvpn = pkgs.stdenv.mkDerivation rec {
-    name = "nordvpn";
-    src = builtins.fetchurl {
-      url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_3.14.2_amd64.deb";
-      sha256 = "1alqh0bzz4y9dpfw8mmg7aa8ffnz46r2gjh3zdbhap3rfkycyxk8";
-    };
-    unpackCmd = "${pkgs.dpkg}/bin/dpkg-deb -x $curSrc .";
-    nativeBuildInputs = with pkgs; [
-      autoPatchelfHook
-    ];
-    builtInputs = with pkgs; [
-    ];
-    runtimeDependencies = [
-    ];
-    installPhase = ''
-      mkdir -p $out
-      cp -r . $out/
-    '';
-  };
-  in with pkgs; [
-    ripgrep
-  # nordvpn
+  environment.systemPackages = with pkgs; [
+  ripgrep
   wget
   gnome.zenity
   cmake
@@ -193,7 +188,9 @@ in
     vterm
   ]))
 
-  ];
+  ]++
+  [inputs.hyprcontrib.packages.x86_64-linux.grimblast
+];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
