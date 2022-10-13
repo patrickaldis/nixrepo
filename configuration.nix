@@ -7,6 +7,12 @@
     url = "https://github.com/nix-community/home-manager/archive/a7f0cc2d7b271b4a5df9b9e351d556c172f7e903/master.tar.gz";
     sha256="0ydkwprdkiq3xjkqf8j7spwaaaxhdm2ka2ylkzycfz49id4fb2q2";
   };
+  python3-with-my-packages =
+    pkgs.python3.withPackages (python-packages: with python-packages; [
+      numpy
+      notebook
+      matplotlib
+  ]);
 in
 {
   imports =
@@ -17,7 +23,12 @@ in
     ];
   
   #DEVICE CONFIGURATION
-  nixpkgs.config.allowUnfree = true;                                #NIX
+  nixpkgs.config = {
+    allowUnfree = true;                                #NIX
+    chromium = {
+      enableWideVine = true;
+    };
+  };
   nix.settings = {
     substituters = ["https://hyprland.cachix.org"  "https://nix-community.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="];
@@ -68,7 +79,6 @@ in
   users.defaultUserShell = pkgs.fish;                               #SHELL
   environment.shells = with pkgs; [ fish ];
   environment.sessionVariables = rec {
-    #XCURSOR_SIZE="64";
     GDK_SCALE="2";
     EDITOR="nvim";
     fish_greeting="";
@@ -110,6 +120,7 @@ in
     home.homeDirectory = "/home/patrickaldis";
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
+    home.file.".internet/comodo.pem".source = ./xdgconf/internet/comodo.pem;
     xdg.configFile = {
       "hypr/hyprland.conf".source = ./xdgconf/hyprland/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;
@@ -134,15 +145,15 @@ in
     #             "hidePodcasts.js"
     #           ];
     #         };
-    #     };
+        };
 
 
   nixpkgs.overlays = [
-    (self: super: {
-      waybar-hyprland = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
+    # (self: super: {
+    #   waybar-hyprland = super.waybar.overrideAttrs (oldAttrs: {
+    #     mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    #   });
+    # })
     (import (builtins.fetchTarball {
       url = "https://github.com/nix-community/emacs-overlay/archive/99f607199684071fef8e8a411d4e5d862cd5647a/master.tar.gz";
       sha256 = "04sf1sfia8s2whkmd90hgqmxyyyqaj13cqzsj8jwzp652xygvgk0";
@@ -176,13 +187,17 @@ in
   gnome.adwaita-icon-theme
   stow
   vscode
-  waybar-hyprland
+  # waybar-hyprland
   kitty
   tridactyl-native
   wlsunset
+  qutebrowser
   xdg-desktop-portal
   xdg-desktop-portal-gtk
+  # python3-with-my-packages
   xdg-desktop-portal-wlr
+  networkmanagerapplet
+  direnv
   ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
     libvterm
     vterm
@@ -190,6 +205,7 @@ in
 
   ]++
   [inputs.hyprcontrib.packages.x86_64-linux.grimblast
+   inputs.hyprland.packages.x86_64-linux.waybar-hyprland
 ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -214,6 +230,7 @@ in
     enable = true;
     url = "https://outlook.office365.com/EWS/Exchange.asmx";
   };
+  services.lorri.enable = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
