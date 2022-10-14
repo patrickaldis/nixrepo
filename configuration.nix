@@ -17,6 +17,7 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./envpkgs.nix
       ./hardware-configuration.nix
       (import "${home-manager}/nixos")
       # inputs.spicetify-nix.homeManagerModule
@@ -131,82 +132,63 @@ in
     services.dunst = {
       enable = true;
     };
-    # programs.spicetify =
-    #         {
-    #           enable = true;
-    #           theme = "catppuccin-mocha";
-    #           # OR
-    #           # theme = spicetify-nix.pkgSets.${pkgs.system}.themes.catppuccin-mocha;
-    #           colorScheme = "flamingo";
-
-    #           enabledExtensions = [
-    #             "fullAppDisplay.js"
-    #             "shuffle+.js"
-    #             "hidePodcasts.js"
-    #           ];
-    #         };
         };
 
 
   nixpkgs.overlays = [
-    # (self: super: {
-    #   waybar-hyprland = super.waybar.overrideAttrs (oldAttrs: {
-    #     mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    #   });
-    # })
     (import (builtins.fetchTarball {
       url = "https://github.com/nix-community/emacs-overlay/archive/99f607199684071fef8e8a411d4e5d862cd5647a/master.tar.gz";
       sha256 = "04sf1sfia8s2whkmd90hgqmxyyyqaj13cqzsj8jwzp652xygvgk0";
     }))
   ];
 
-  environment.systemPackages = with pkgs; [
-  ripgrep
-  wget
-  gnome.zenity
-  cmake
-  swayidle
-  playerctl
-  mailspring
-  neofetch
-  pulseaudio
-  spotify
-  killall
-  libappindicator
-  neovim
-  discord
-  pavucontrol
-  thunderbird
-  blueberry
-  openvpn
-  xorg.xeyes
-  xorg.xprop
-  google-chrome
-  wofi
-  gnome.nautilus
-  gnome.adwaita-icon-theme
-  stow
-  vscode
-  # waybar-hyprland
-  kitty
-  tridactyl-native
-  wlsunset
-  qutebrowser
-  xdg-desktop-portal
-  xdg-desktop-portal-gtk
-  # python3-with-my-packages
-  xdg-desktop-portal-wlr
-  networkmanagerapplet
-  direnv
-  ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
-    libvterm
-    vterm
-  ]))
+  # environment.systemPackages = with pkgs; [
+#   ripgrep
+#   wget
+#   gnome.zenity
+#   cmake
+#   swayidle
+#   playerctl
+#   mailspring
+#   neofetch
+#   pulseaudio
+#   spotify
+#   killall
+#   libappindicator
+#   neovim
+#   discord
+#   pavucontrol
+#   thunderbird
+#   blueberry
+#   openvpn
+#   xorg.xeyes
+#   xorg.xprop
+#   google-chrome
+#   wofi
+#   gnome.nautilus
+#   gnome.adwaita-icon-theme
+#   stow
+#   vscode
+#   # waybar-hyprland
+#   kitty
+#   tridactyl-native
+#   wlsunset
+#   qutebrowser
+#   xdg-desktop-portal
+#   xdg-desktop-portal-gtk
+#   # python3-with-my-packages
+#   xdg-desktop-portal-wlr
+#   networkmanagerapplet
+#   direnv
+#   ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
+#     libvterm
+#     vterm
+#   ]))
 
-  ]++
-  [inputs.hyprcontrib.packages.x86_64-linux.grimblast
-   inputs.hyprland.packages.x86_64-linux.waybar-hyprland
-];
+#   ]++
+#   [inputs.hyprcontrib.packages.x86_64-linux.grimblast
+#    inputs.hyprland.packages.x86_64-linux.waybar-hyprland
+# ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
