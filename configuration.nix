@@ -42,6 +42,7 @@ in
       "waybar".source = ./xdgconf/waybar;
       "wofi".source = ./xdgconf/wofi;
       "dunst".source = ./xdgconf/dunst;
+      "fish/config.fish".source = ./xdgconf/fish/config.fish;
     };
 
     services.dunst = {
