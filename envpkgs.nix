@@ -13,6 +13,7 @@
       gnome.zenity
       playerctl
       wlsunset
+      light
       direnv
 
       #UTILTIES
@@ -35,6 +36,7 @@
       wofi
       qutebrowser
       gnome.nautilus
+      cinnamon.nemo
       vscode
       kitty
       ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
@@ -43,8 +45,21 @@
       ]))
     ]
     ++
+    (with inputs;
     [#HYPRLAND UTILS
-      inputs.hyprcontrib.packages.x86_64-linux.grimblast
-      inputs.hyprland.packages.x86_64-linux.waybar-hyprland
-    ];
+      hyprcontrib.packages.x86_64-linux.grimblast
+      hyprland.packages.x86_64-linux.waybar-hyprland
+    ]
+    );
+
+  #SERVICES
+  services =
+  {
+    flatpak.enable = true;
+    lorri.enable = true;
+    emacs = {
+      enable = true;
+      package = pkgs.emacsPgtkNativeComp;
+    };
+  };
 }
