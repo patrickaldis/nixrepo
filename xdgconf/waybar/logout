@@ -1,10 +1,10 @@
 Choice=$(echo -e 'Reboot\nShutdown\nLogout' | wofi --show dmenu)
 case $Choice in
     Reboot)
-        reboot now
+	systemctl reboot
         ;;
     Shutdown)
-        shutdown now
+        systemctl shutdown
         ;;
     Logout)
         hyprctl dispatch exit * && pkill -KILL -u patrickaldis
