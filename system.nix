@@ -10,7 +10,6 @@
       consoleMode = "1";
     };
   };
-
   console = {
     earlySetup = true;
     font = "ter-v32n";
@@ -30,5 +29,6 @@
   console.keyMap = "uk";
 
   hardware.bluetooth.enable = true;                                 #SOUND
+  hardware.opengl.driSupport32Bit = true;
   security.rtkit.enable = true;
 }
