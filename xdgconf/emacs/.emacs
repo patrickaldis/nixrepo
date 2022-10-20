@@ -14,6 +14,8 @@
 (require 'treemacs)
 (require 'treemacs-all-the-icons)
 (treemacs-load-theme "all-the-icons")
+(require 'treemacs-magit)
+(require 'treemacs-projectile)
 
 (require 'doom-modeline)
 (doom-modeline-mode 1)

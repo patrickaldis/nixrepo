@@ -44,9 +44,13 @@
           (with epkgs; [
             magit
             projectile
+            
             treemacs
             all-the-icons
             treemacs-all-the-icons
+            treemacs-projectile
+            treemacs-magit
+
             libvterm
             vterm
             doom-modeline
