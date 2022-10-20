@@ -53,6 +53,7 @@
 
             libvterm
             vterm
+            direnv
             doom-modeline
 
             lsp-mode

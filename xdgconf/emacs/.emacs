@@ -23,6 +23,8 @@
 
 (require 'vterm)
 
+(require 'direnv)
+
 ;; LSP
 (require 'lsp-mode)
 (require 'lsp-haskell)
