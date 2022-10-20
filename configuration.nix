@@ -37,6 +37,7 @@ in
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
     home.file.".internet/comodo.pem".source = ./xdgconf/internet/comodo.pem;
+    home.file.".emacs".source = ./xdgconf/emacs/.emacs;
     xdg.configFile = {
       "hypr/hyprland.conf".source = ./xdgconf/hyprland/hyprland.conf;
       "waybar".source = ./xdgconf/waybar;

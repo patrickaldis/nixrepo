@@ -39,10 +39,34 @@
       cinnamon.nemo
       vscode
       kitty
-      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: with epkgs; [
-        libvterm
-        vterm
-      ]))
+      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
+        (epkgs:
+          (with epkgs; [
+            magit
+            projectile
+            treemacs
+            all-the-icons
+            treemacs-all-the-icons
+            libvterm
+            vterm
+            doom-modeline
+
+            lsp-mode
+            lsp-haskell
+            nix-mode
+            
+            evil
+            evil-collection
+            evil-leader
+
+            dracula-theme
+          ])
+        ++
+        (with pkgs;
+          [python3]
+        )
+      )
+    )
     ]
     ++
     (with inputs;
