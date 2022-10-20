@@ -40,7 +40,7 @@
 
 ;; UI
 ;; FONT
-(set-face-attribute 'default t :font "JetBrainsMono Nerd Font Mono" )
+(set-frame-font "JetBrainsMono Nerd Font Mono 10" nil t)
 
 ;; SCROLLING
 (pixel-scroll-precision-mode 1)
