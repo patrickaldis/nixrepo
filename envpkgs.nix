@@ -41,7 +41,7 @@
       cinnamon.nemo
       vscode
       kitty
-      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
+      ((emacsPackagesFor emacs).emacsWithPackages
         (epkgs:
           (with epkgs; [
             magit
@@ -58,9 +58,8 @@
             direnv
             doom-modeline
 
-            lsp-mode
-            lsp-haskell
             nix-mode
+            haskell-mode
             
             evil
             evil-collection
@@ -71,6 +70,24 @@
         ++
         (with pkgs;
           [python3]
+        )
+        ++
+        (with epkgs.melpaStablePackages;
+          [
+            lsp-mode
+            lsp-ui
+            company
+            lsp-treemacs
+          ])
+        ++
+        (with epkgs.melpaPackages;
+          [
+            lsp-haskell
+
+            python-mode
+            lsp-pyright
+            flycheck
+          ]
         )
       )
     )

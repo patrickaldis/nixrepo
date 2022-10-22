@@ -24,12 +24,25 @@
 (require 'vterm)
 
 (require 'direnv)
+(direnv-mode)
+
+;;COMPANY
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay 0)
+
+(require 'flycheck)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; LSP
 (require 'lsp-mode)
+(require 'lsp-ui)
+
+(require 'haskell-mode)
 (require 'lsp-haskell)
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
+
 (require 'nix-mode)
 (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
 
@@ -42,10 +55,44 @@
 
 ;; UI
 ;; FONT
-(set-frame-font "JetBrainsMono Nerd Font Mono 10" nil t)
+(set-frame-font "JetBrainsMono Nerd Font Mono 20" nil t)
+(dolist (char/ligature-re
+         `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))
+           (?/  . ,(rx (or (or "/==" "/=" "/>" "/**" "/*") (+ "/"))))
+           (?*  . ,(rx (or (or "*>" "*/") (+ "*"))))
+           (?<  . ,(rx (or (or "<<=" "<<-" "<|||" "<==>" "<!--" "<=>" "<||" "<|>" "<-<"
+                               "<==" "<=<" "<-|" "<~>" "<=|" "<~~" "<$>" "<+>" "</>"
+                               "<*>" "<->" "<=" "<|" "<:" "<>"  "<$" "<-" "<~" "<+"
+                               "</" "<*")
+                           (+ "<"))))
+           (?:  . ,(rx (or (or ":?>" "::=" ":>" ":<" ":?" ":=") (+ ":"))))
+           (?=  . ,(rx (or (or "=>>" "==>" "=/=" "=!=" "=>" "=:=") (+ "="))))
+           (?!  . ,(rx (or (or "!==" "!=") (+ "!"))))
+           (?>  . ,(rx (or (or ">>-" ">>=" ">=>" ">]" ">:" ">-" ">=") (+ ">"))))
+           (?&  . ,(rx (+ "&")))
+           (?|  . ,(rx (or (or "|->" "|||>" "||>" "|=>" "||-" "||=" "|-" "|>"
+                               "|]" "|}" "|=")
+                           (+ "|"))))
+           (?.  . ,(rx (or (or ".?" ".=" ".-" "..<") (+ "."))))
+           (?+  . ,(rx (or "+>" (+ "+"))))
+           (?\[ . ,(rx (or "[<" "[|")))
+           (?\{ . ,(rx "{|"))
+           (?\? . ,(rx (or (or "?." "?=" "?:") (+ "?"))))
+           (?#  . ,(rx (or (or "#_(" "#[" "#{" "#=" "#!" "#:" "#_" "#?" "#(")
+                           (+ "#"))))
+           (?\; . ,(rx (+ ";")))
+           (?_  . ,(rx (or "_|_" "__")))
+           (?~  . ,(rx (or "~~>" "~~" "~>" "~-" "~@")))
+           (?$  . ,(rx "$>"))
+           (?^  . ,(rx "^="))
+           (?\] . ,(rx "]#"))))
+  (let ((char (car char/ligature-re))
+        (ligature-re (cdr char/ligature-re)))
+    (set-char-table-range composition-function-table char
+                          `([,ligature-re 0 font-shape-gstring]))))
 
 ;; SCROLLING
-(pixel-scroll-precision-mode 1)
+;(pixel-scroll-precision-mode 1)
 (setq scroll-conservatively 101)
 
 ;; HIDE UI
