@@ -15,6 +15,8 @@
       wlsunset
       light
       direnv
+      gamescope
+      mangohud
 
       #UTILTIES
       networkmanagerapplet
@@ -90,5 +92,11 @@
       enable = true;
       package = pkgs.emacsPgtkNativeComp;
     };
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true;
   };
 }
