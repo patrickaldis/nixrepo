@@ -58,6 +58,11 @@
             direnv
             doom-modeline
 
+            counsel
+            ivy-rich
+            all-the-icons-ivy-rich
+            avy
+            
             nix-mode
             haskell-mode
             

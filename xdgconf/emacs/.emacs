@@ -23,6 +23,15 @@
 
 (require 'vterm)
 
+(require 'avy)
+(require 'ivy)
+(require 'ivy-rich)
+
+(ivy-mode 1)
+(ivy-rich-mode 1)
+(all-the-icons-ivy-rich-mode 1)
+(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+
 (require 'direnv)
 (direnv-mode)
 
