@@ -42,6 +42,8 @@
       cinnamon.nemo
       vscode
       kitty
+      deluge
+      vlc
       ((emacsPackagesFor emacs).emacsWithPackages
         (epkgs:
           (with epkgs; [
