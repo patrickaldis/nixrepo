@@ -45,6 +45,9 @@
         (epkgs:
           (with epkgs; [
             magit
+            git-gutter
+            git-gutter-fringe
+            
             projectile
             
             treemacs
