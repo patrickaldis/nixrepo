@@ -36,7 +36,7 @@
       mailspring
       thunderbird
       wofi
-      qutebrowser
+      (qutebrowser.override {enableWideVine=true;})
       gnome.nautilus
       cinnamon.nemo
       vscode
