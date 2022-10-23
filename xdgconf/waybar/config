@@ -13,7 +13,7 @@
         "format-ethernet": "{ifname} ",
         "format-disconnected": "", 
         "max-length": 50,
-        "on-click": "kitty -e 'nmtui'"
+        "on-click": "kitty -e 'nm-connection-editor'"
     },
     "idle_inhibitor": {
         "format": "{icon}",
