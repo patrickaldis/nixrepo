@@ -64,6 +64,8 @@
 (require 'nix-mode)
 (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
 
+(require 'fish-mode)
+
 (setq evil-want-keybinding nil)
 (require 'evil-collection)
 (evil-collection-init)

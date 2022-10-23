@@ -15,6 +15,7 @@
       wlsunset
       light
       direnv
+      any-nix-shell
       gamescope
       mangohud
 
@@ -68,6 +69,7 @@
             
             nix-mode
             haskell-mode
+            fish-mode
             
             evil
             evil-collection
