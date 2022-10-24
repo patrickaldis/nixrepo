@@ -118,8 +118,8 @@
     flatpak.enable = true;
     lorri.enable = true;
     emacs = {
-      enable = true;
-      package = pkgs.emacsPgtkNativeComp;
+      enable = false;
+      package = pkgs.emacs;
     };
   };
 
