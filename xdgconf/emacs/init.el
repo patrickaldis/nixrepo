@@ -9,9 +9,16 @@
 (define-fringe-bitmap 'git-gutter-fr:modified [224] nil nil '(center repeated))
 (define-fringe-bitmap 'git-gutter-fr:deleted [128 192 224 240] nil nil 'bottom)
 
-
 (require 'projectile)
 (projectile-mode +1)
+
+;; Keymap
+(global-set-key (kbd "C-x p p") 'projectile-switch-project)
+(global-set-key (kbd "C-x p f") 'projectile-find-file)
+
+(global-unset-key (kbd "C-x o"))
+(global-set-key (kbd "C-x o p") 'treemacs)
+(global-set-key (kbd "C-x o t") 'vterm)
 
 ;; PROJECT VIEWER
 (require 'all-the-icons)
