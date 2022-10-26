@@ -32,13 +32,14 @@
       xdg-desktop-portal-wlr
 
       #APPLICATIONS
-      spotify
+      spotify-unwrapped
       discord
       mailspring
       thunderbird
       wofi
       (qutebrowser.override {enableWideVine=true;})
       gnome.nautilus
+      gnome.evince
       cinnamon.nemo
       vscode
       kitty
