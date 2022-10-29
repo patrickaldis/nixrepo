@@ -23,6 +23,7 @@
       networkmanagerapplet
       pavucontrol
       blueberry
+      baobab
 
       #LIB
       libappindicator
