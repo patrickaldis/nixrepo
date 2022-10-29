@@ -69,6 +69,8 @@
             counsel
             ivy-rich
             all-the-icons-ivy-rich
+            prescient
+            ivy-prescient
             avy
             
             nix-mode

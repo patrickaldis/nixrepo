@@ -44,9 +44,16 @@
 (require 'ivy-rich)
 
 (ivy-mode 1)
+(define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+(define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
+
 (ivy-rich-mode 1)
 (all-the-icons-ivy-rich-mode 1)
 (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+
+(require 'prescient)
+(require 'ivy-prescient)
+(ivy-prescient-mode)
 
 (require 'direnv)
 (direnv-mode)
@@ -138,6 +145,18 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 (require 'evil-leader)
+(define-key evil-motion-state-map (kbd "SPC") nil)
+
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+  "f" 'counsel-find-file
+  "p" 'projectile-switch-project
+  "b" 'ivy-switch-buffer
+  "g" 'magit
+  "t" 'vterm
+  "SPC" 'projectile-find-file
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
