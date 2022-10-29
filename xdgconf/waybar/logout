@@ -4,7 +4,7 @@ case $Choice in
 	systemctl reboot
         ;;
     Shutdown)
-        systemctl shutdown
+        shutdown now
         ;;
     Logout)
         hyprctl dispatch exit * && pkill -KILL -u patrickaldis
