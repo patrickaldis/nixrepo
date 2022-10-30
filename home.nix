@@ -1,5 +1,5 @@
 {pkgs, spicetify-nix, ...}:{
-    imports = [spicetify-nix.homeManagerModule ./xdgconf/hypr/hyprland.nix];
+    imports = [spicetify-nix.homeManagerModule ./xdgconf/hypr/hyprland/wrapper.nix];
 
     programs.spicetify = {
       enable = true;
