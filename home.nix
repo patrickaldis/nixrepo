@@ -1,5 +1,5 @@
 {pkgs, spicetify-nix, ...}:{
-    imports = [spicetify-nix.homeManagerModule];
+    imports = [spicetify-nix.homeManagerModule ./xdgconf/hypr/hyprland.nix];
 
     programs.spicetify = {
       enable = true;
@@ -35,7 +35,8 @@
     home.file.".internet/comodo.pem".source = ./xdgconf/internet/comodo.pem;
     home.file.".emacs.d/init.el".source = ./xdgconf/emacs/init.el;
     xdg.configFile = {
-      "hypr".source = ./xdgconf/hypr;
+      "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper.conf;
+      "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
       "waybar".source = ./xdgconf/waybar;
       "wofi".source = ./xdgconf/wofi;
       "dunst".source = ./xdgconf/dunst;
