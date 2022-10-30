@@ -7,6 +7,7 @@
     isNormalUser = true;
   };
 
+  programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;                               #SHELL
   environment.shells = with pkgs; [ fish ];
   environment.sessionVariables = rec {
