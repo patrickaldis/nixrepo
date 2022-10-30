@@ -46,6 +46,8 @@
       kitty
       deluge
       vlc
+      foliate
+      setzer
       ((emacsPackagesFor emacs).emacsWithPackages
         (epkgs:
           (with epkgs; [
