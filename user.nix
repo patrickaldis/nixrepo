@@ -12,6 +12,7 @@
   environment.shells = with pkgs; [ fish ];
   environment.sessionVariables = rec {
     GDK_SCALE="2";
+    TERMCMD="kitty";
     EDITOR="nvim";
     fish_greeting="";
   };
