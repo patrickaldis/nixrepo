@@ -41,6 +41,7 @@
       "wofi".source = ./xdgconf/wofi;
       "dunst".source = ./xdgconf/dunst;
       "fish/config.fish".source = ./xdgconf/fish/config.fish;
+      "ranger/rifle.conf".source = ./xdgconf/ranger/rifle.conf;
     };
 
     services.dunst = {

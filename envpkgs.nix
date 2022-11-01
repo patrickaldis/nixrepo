@@ -24,13 +24,20 @@
       pavucontrol
       blueberry
       baobab
+      ranger
 
       #LIB
-      libappindicator
+      libappindicator-gtk3
+      libappindicator-gtk2
+      libayatana-appindicator-gtk3
+
       gnome.adwaita-icon-theme
       xdg-desktop-portal
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
+
+      #GNOME
+      gnomeExtensions.appindicator
 
       #APPLICATIONS
       spotify-unwrapped
@@ -127,6 +134,7 @@
       enable = false;
       package = pkgs.emacs;
     };
+    udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 
   programs.steam = {
