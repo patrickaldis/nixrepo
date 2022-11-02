@@ -29,11 +29,24 @@
       };
     };
 
+    programs.kitty = {
+      enable = true;
+      font.name = "JetBrains Mono Regular Nerd Font Complete Mono";
+      settings =
+        {
+          "confirm_os_window_close"= 0 ; 
+        };
+      theme = "Catppuccin-Frappe";
+      extraConfig = "include current-theme.conf";
+    };
+    xdg.configFile."kitty/current-theme.conf" = ./xdgconf/kitty/current-theme.conf;
+
     home.homeDirectory = "/home/patrickaldis";
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
     home.file.".internet/comodo.pem".source = ./xdgconf/internet/comodo.pem;
     home.file.".emacs.d/init.el".source = ./xdgconf/emacs/init.el;
+    
     xdg.configFile = {
       "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper.conf;
       "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
