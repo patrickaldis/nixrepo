@@ -3,7 +3,7 @@
   users.users.patrickaldis = {                                      #USERS
     description = "Patrick Aldis";
     initialPassword = "password";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "libvirtd"];
     isNormalUser = true;
   };
 
