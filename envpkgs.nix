@@ -13,8 +13,8 @@
       gnome.zenity
       playerctl
       wlsunset
-      light
       direnv
+      brightnessctl
       any-nix-shell
       gamescope
       mangohud

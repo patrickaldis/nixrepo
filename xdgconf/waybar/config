@@ -37,6 +37,9 @@
     	"format": "{capacity} {icon}",
     	"format-icons": ["","", "","","", "","","","","",""],
     },
+    "backlight": {
+    	"format": "{percent}% ",
+    },
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "format-muted": "0% {icon} ",
