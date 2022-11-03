@@ -37,9 +37,7 @@
           "confirm_os_window_close"= 0 ; 
         };
       theme = "Catppuccin-Frappe";
-      extraConfig = "include current-theme.conf";
     };
-    xdg.configFile."kitty/current-theme.conf" = ./xdgconf/kitty/current-theme.conf;
 
     home.homeDirectory = "/home/patrickaldis";
     home.packages = with pkgs; [ git lutris];
