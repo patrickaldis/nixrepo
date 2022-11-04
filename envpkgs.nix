@@ -90,6 +90,7 @@
             evil-collection
             evil-leader
 
+            autothemer
             dracula-theme
           ])
         ++

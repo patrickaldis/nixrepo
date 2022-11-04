@@ -20,6 +20,10 @@
 (global-set-key (kbd "C-x o p") 'treemacs)
 (global-set-key (kbd "C-x o t") 'vterm)
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(require 'autothemer)
+(load-theme 'catppuccin-frappe t)
+
 ;; PROJECT VIEWER
 (require 'all-the-icons)
 
@@ -138,7 +142,7 @@
 (setq inhibit-startup-message t)
 
 ;; THEME
-(load-theme 'dracula t)
+;; (load-theme 'dracula t)
 
 ;; EDITOR
 (add-hook 'prog-mode-hook 'display-line-numbers-mode) ;; DISPLAY LINE NOS
