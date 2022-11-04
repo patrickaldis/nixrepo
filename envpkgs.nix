@@ -55,7 +55,7 @@
       vlc
       foliate
       setzer
-      ((emacsPackagesFor emacs).emacsWithPackages
+      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
         (epkgs:
           (with epkgs; [
             magit

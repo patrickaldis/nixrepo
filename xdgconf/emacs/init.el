@@ -69,6 +69,8 @@
 ;; LSP
 (require 'lsp-mode)
 (require 'lsp-ui)
+(setq gc-cons-threshold 1000000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 (require 'haskell-mode)
 (require 'lsp-haskell)
@@ -89,7 +91,7 @@
 
 ;; UI
 ;; FONT
-(set-frame-font "JetBrainsMono Nerd Font Mono 20" nil t)
+(set-frame-font "JetBrainsMono Nerd Font Mono 10" nil t)
 (dolist (char/ligature-re
          `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))
            (?/  . ,(rx (or (or "/==" "/=" "/>" "/**" "/*") (+ "/"))))
