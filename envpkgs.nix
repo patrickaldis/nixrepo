@@ -143,4 +143,5 @@
     remotePlay.openFirewall = true; 
     dedicatedServer.openFirewall = true;
   };
+  programs.kdeconnect.enable = true;
 }
