@@ -47,7 +47,18 @@ window#waybar {
 	background: #fa768b;
     color: #282A2E;
 }
-
+button {
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+}
+button:hover {
+    color: #fa768b;
+    border-radius: 20px;
+    background: #303446;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
 #clock,
 #battery,
 #cpu,
@@ -78,6 +89,10 @@ window#waybar {
     padding: 0px 7px;
     font-size: 20px;
     margin: 3px 3px;
+}
+#custom-power:hover {
+    color: #fa768b;
+    background: #303446;
 }
 /*-----Indicators----*/
 #idle_inhibitor.activated {
