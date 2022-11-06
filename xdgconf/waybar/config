@@ -31,11 +31,12 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "{:%R  %B %d}",
         // "format-alt": "{:%Y-%m-%d}"
-		"on-click": "gnome-calendar"
+		"on-click": "qutebrowser --target window 'https://calendar.google.com/calendar/u/0/r'"
     },
     "battery":{
     	"format": "{capacity} {icon}",
     	"format-icons": ["","", "","","", "","","","","",""],
+	"on-click": "",
     },
     "backlight": {
     	"format": "{percent}% ",
@@ -72,7 +73,7 @@
     },
     "custom/waybar-mpris": {
     "return-type": "json",
-    "exec": "~/.config/waybar/waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST'",
+    "exec": "~/.config/waybar/waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST' | cut -c -15",
     "on-click": "~/.config/waybar/waybar-mpris --send toggle",
     //"on-click-middle": "Hyprctl dispatch focuswindow ''",
     // This option will switch between players on right click.
