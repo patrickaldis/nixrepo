@@ -29,6 +29,13 @@
       };
     };
 
+    gtk = {
+      enable = true;
+      theme = {
+        name = "CatppuccinFrappe";
+      };
+    };
+    
     programs.kitty = {
       enable = true;
       font.name = "JetBrains Mono Regular Nerd Font Complete Mono";
@@ -45,7 +52,8 @@
     home.file.".internet/comodo.pem".source = ./xdgconf/internet/comodo.pem;
     home.file.".emacs.d/init.el".source = ./xdgconf/emacs/init.el;
     home.file.".emacs.d/themes/catppuccin-frappe-theme.el".source = ./xdgconf/emacs/catppuccin-frappe-theme.el;
-    
+    home.file.".themes/CatppuccinFrappe".source = ./xdgconf/gtk/Catppuccin-Frappe-Pink/Catppuccin-Frappe-Pink;
+
     xdg.configFile = {
       "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper.conf;
       "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
