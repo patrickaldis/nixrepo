@@ -53,12 +53,14 @@
       vscode
       kitty
       deluge
-      vlc
+      clapper
       foliate
       setzer
       ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
         (epkgs:
           (with epkgs; [
+            use-package
+
             magit
             git-gutter
             git-gutter-fringe

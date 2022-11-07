@@ -1,5 +1,6 @@
 ;; Reqired Packages
 (require 'magit)
+(require 'use-package)
 
 (require 'git-gutter)
 (add-hook 'prog-mode-hook 'git-gutter-mode) 
@@ -60,6 +61,7 @@
 (ivy-prescient-mode)
 
 (require 'direnv)
+(setq direnv-always-show-summary nil)
 (direnv-mode)
 
 ;;COMPANY
@@ -72,13 +74,20 @@
 
 ;; LSP
 (require 'lsp-mode)
+(use-package lsp-mode
+  :after (evil direnv)
+  :config
+  (setq gc-cons-threshold 1000000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+  )
+
 (require 'lsp-ui)
 (setq gc-cons-threshold 1000000000)
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
 
 (require 'haskell-mode)
 (require 'lsp-haskell)
-(add-hook 'haskell-mode-hook #'lsp)
+(add-hook 'haskell-mode-hook #'lsp-deferred)
 (add-hook 'haskell-literate-mode-hook #'lsp)
 
 (require 'nix-mode)
@@ -102,42 +111,42 @@
 ;; UI
 ;; FONT
 (set-frame-font "JetBrainsMono Nerd Font Mono 10" nil t)
-(dolist (char/ligature-re
-         `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))
-           (?/  . ,(rx (or (or "/==" "/=" "/>" "/**" "/*") (+ "/"))))
-           (?*  . ,(rx (or (or "*>" "*/") (+ "*"))))
-           (?<  . ,(rx (or (or "<<=" "<<-" "<|||" "<==>" "<!--" "<=>" "<||" "<|>" "<-<"
-                               "<==" "<=<" "<-|" "<~>" "<=|" "<~~" "<$>" "<+>" "</>"
-                               "<*>" "<->" "<=" "<|" "<:" "<>"  "<$" "<-" "<~" "<+"
-                               "</" "<*")
-                           (+ "<"))))
-           (?:  . ,(rx (or (or ":?>" "::=" ":>" ":<" ":?" ":=") (+ ":"))))
-           (?=  . ,(rx (or (or "=>>" "==>" "=/=" "=!=" "=>" "=:=") (+ "="))))
-           (?!  . ,(rx (or (or "!==" "!=") (+ "!"))))
-           (?>  . ,(rx (or (or ">>-" ">>=" ">=>" ">]" ">:" ">-" ">=") (+ ">"))))
-           (?&  . ,(rx (+ "&")))
-           (?|  . ,(rx (or (or "|->" "|||>" "||>" "|=>" "||-" "||=" "|-" "|>"
-                               "|]" "|}" "|=")
-                           (+ "|"))))
-           (?.  . ,(rx (or (or ".?" ".=" ".-" "..<") (+ "."))))
-           (?+  . ,(rx (or "+>" (+ "+"))))
-           (?\[ . ,(rx (or "[<" "[|")))
-           (?\{ . ,(rx "{|"))
-           (?\? . ,(rx (or (or "?." "?=" "?:") (+ "?"))))
-           (?#  . ,(rx (or (or "#_(" "#[" "#{" "#=" "#!" "#:" "#_" "#?" "#(")
-                           (+ "#"))))
-           (?\; . ,(rx (+ ";")))
-           (?_  . ,(rx (or "_|_" "__")))
-           (?~  . ,(rx (or "~~>" "~~" "~>" "~-" "~@")))
-           (?$  . ,(rx "$>"))
-           (?^  . ,(rx "^="))
-           (?\] . ,(rx "]#"))))
-  (let ((char (car char/ligature-re))
-        (ligature-re (cdr char/ligature-re)))
-    (set-char-table-range composition-function-table char
-                          `([,ligature-re 0 font-shape-gstring]))))
+;; (dolist (char/ligature-re
+;;          `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))
+;;            (?/  . ,(rx (or (or "/==" "/=" "/>" "/**" "/*") (+ "/"))))
+;;            (?*  . ,(rx (or (or "*>" "*/") (+ "*"))))
+;;            (?<  . ,(rx (or (or "<<=" "<<-" "<|||" "<==>" "<!--" "<=>" "<||" "<|>" "<-<"
+;;                                "<==" "<=<" "<-|" "<~>" "<=|" "<~~" "<$>" "<+>" "</>"
+;;                                "<*>" "<->" "<=" "<|" "<:" "<>"  "<$" "<-" "<~" "<+"
+;;                                "</" "<*")
+;;                            (+ "<"))))
+;;            (?:  . ,(rx (or (or ":?>" "::=" ":>" ":<" ":?" ":=") (+ ":"))))
+;;            (?=  . ,(rx (or (or "=>>" "==>" "=/=" "=!=" "=>" "=:=") (+ "="))))
+;;            (?!  . ,(rx (or (or "!==" "!=") (+ "!"))))
+;;            (?>  . ,(rx (or (or ">>-" ">>=" ">=>" ">]" ">:" ">-" ">=") (+ ">"))))
+;;            (?&  . ,(rx (+ "&")))
+;;            (?|  . ,(rx (or (or "|->" "|||>" "||>" "|=>" "||-" "||=" "|-" "|>"
+;;                                "|]" "|}" "|=")
+;;                            (+ "|"))))
+;;            (?.  . ,(rx (or (or ".?" ".=" ".-" "..<") (+ "."))))
+;;            (?+  . ,(rx (or "+>" (+ "+"))))
+;;            (?\[ . ,(rx (or "[<" "[|")))
+;;            (?\{ . ,(rx "{|"))
+;;            (?\? . ,(rx (or (or "?." "?=" "?:") (+ "?"))))
+;;            (?#  . ,(rx (or (or "#_(" "#[" "#{" "#=" "#!" "#:" "#_" "#?" "#(")
+;;                            (+ "#"))))
+;;            (?\; . ,(rx (+ ";")))
+;;            (?_  . ,(rx (or "_|_" "__")))
+;;            (?~  . ,(rx (or "~~>" "~~" "~>" "~-" "~@")))
+;;            (?$  . ,(rx "$>"))
+;;            (?^  . ,(rx "^="))
+;;            (?\] . ,(rx "]#"))))
+;;   (let ((char (car char/ligature-re))
+;;         (ligature-re (cdr char/ligature-re)))
+;;     (set-char-table-range composition-function-table char
+;;                           `([,ligature-re 0 font-shape-gstring]))))
 
-;; SCROLLING
+;; ;; SCROLLING
 ;(pixel-scroll-precision-mode 1)
 (setq scroll-conservatively 101)
 
