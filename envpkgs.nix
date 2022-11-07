@@ -4,6 +4,7 @@
     with pkgs;
     [#CMD
       ripgrep
+      socat
       cmake
       neofetch
       pulseaudio
@@ -144,4 +145,13 @@
     dedicatedServer.openFirewall = true;
   };
   programs.kdeconnect.enable = true;
+
+  #QUTEBROWSER SCRIPT
+  systemd.services.qutedaemon = {
+    serviceConfig = {
+      ExecStart= "qutebrowser -R --nowindow";
+      RestartSec="1s";
+      Restart="always";
+    };
+  };
 }
