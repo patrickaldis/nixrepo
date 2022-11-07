@@ -13,8 +13,8 @@
       killall
       gnome.zenity
       playerctl
-      wlsunset
       direnv
+      gammastep
       brightnessctl
       any-nix-shell
       gamescope
