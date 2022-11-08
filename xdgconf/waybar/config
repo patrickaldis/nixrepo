@@ -56,7 +56,7 @@
             "default": ["", "", ""]
         },
         "on-click": "sh ~/.config/waybar/swap-sink",
-        "on-click-middle": "pavucontrol",
+        "on-click-middle": "blueberry",
     },
 	"custom/power": {
 		"format": "",
@@ -73,7 +73,7 @@
     },
     "custom/waybar-mpris": {
     "return-type": "json",
-    "exec": "~/.config/waybar/waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST' | cut -c -15",
+    "exec": "~/.config/waybar/waybar-mpris --position --autofocus --order 'SYMBOL:TITLE:ARTIST'",
     "on-click": "~/.config/waybar/waybar-mpris --send toggle",
     //"on-click-middle": "Hyprctl dispatch focuswindow ''",
     // This option will switch between players on right click.
