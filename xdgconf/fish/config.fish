@@ -3,7 +3,6 @@ if status is-interactive
 end
 # fish_vi_key_bindings
 
-direnv hook fish | source
 any-nix-shell fish --info-right | source
 
 bind \b backward-kill-word

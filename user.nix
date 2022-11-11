@@ -16,4 +16,10 @@
     EDITOR="nvim";
     fish_greeting="";
   };
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "@reboot rm -r -f home/patrickaldis/Downloads/*"
+    ];
+  }; 
 }

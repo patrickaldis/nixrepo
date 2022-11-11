@@ -13,7 +13,6 @@
       killall
       gnome.zenity
       playerctl
-      direnv
       gammastep
       brightnessctl
       any-nix-shell
@@ -45,6 +44,7 @@
       discord
       mailspring
       thunderbird
+      lutris
       wofi
       (qutebrowser.override {enableWideVine=true;})
       gnome.nautilus
@@ -52,12 +52,15 @@
       cinnamon.nemo
       vscode
       kitty
-      deluge
+      fragments
       clapper
       foliate
       setzer
-      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages
-        (epkgs:
+      (emacsWithPackagesFromUsePackage {
+        package = pkgs.emacsPgtkNativeComp;
+        config = ./xdgconf/emacs/init.el;
+
+        extraEmacsPackages = (epkgs:
           (with epkgs; [
             use-package
 
@@ -96,30 +99,30 @@
             autothemer
             dracula-theme
           ])
-        ++
-        (with pkgs;
-          [python3]
-        )
-        ++
-        (with epkgs.melpaStablePackages;
-          [
-            lsp-mode
-            lsp-ui
-            company
-            lsp-treemacs
-          ])
-        ++
-        (with epkgs.melpaPackages;
-          [
-            lsp-haskell
+          ++
+          (with pkgs;
+            [python3]
+          )
+          ++
+          (with epkgs.melpaStablePackages;
+            [
+              lsp-mode
+              lsp-ui
+              company
+              lsp-treemacs
+            ])
+          ++
+          (with epkgs.melpaPackages;
+            [
+              lsp-haskell
 
-            python-mode
-            lsp-pyright
-            flycheck
-          ]
-        )
-      )
-    )
+              python-mode
+              lsp-pyright
+              flycheck
+            ]
+          )
+        );
+      })
     ]
     ++
     (with inputs;
@@ -134,10 +137,10 @@
   {
     flatpak.enable = true;
     lorri.enable = true;
-    emacs = {
-      enable = false;
-      package = pkgs.emacs;
-    };
+    # emacs = {
+    #   enable = false;
+    #   package = pkgs.emacs;
+    # };
     udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 
