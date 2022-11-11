@@ -1,4 +1,5 @@
 ;; Reqired Packages
+
 (require 'magit)
 (require 'use-package)
 
@@ -110,6 +111,7 @@
 
 ;; UI
 ;; FONT
+(setq default-frame-alist '((font . "JetBrainsMono Nerd Font Mono 10")))
 (set-frame-font "JetBrainsMono Nerd Font Mono 10" nil t)
 ;; (dolist (char/ligature-re
 ;;          `((?-  . ,(rx (or (or "-->" "-<<" "->>" "-|" "-~" "-<" "->") (+ "-"))))

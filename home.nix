@@ -68,4 +68,5 @@
     services.dunst = {
       enable = true;
     };
+    programs.direnv.enable = true;
 }

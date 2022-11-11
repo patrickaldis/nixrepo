@@ -4,7 +4,6 @@ bind=ALTSHIFT,RETURN,exec,kitty
 bind=ALT,F,exec,nemo#kitty -e ranger
 bind=ALT,S,exec,firefox#~/.config/qutebrowser/newwindow.sh
 bind=ALT,D,exec,code#emacsclient -c --eval '(load-file "~/.emacs.d/init.el")'
-bind=ALTSHIFT,D,exec,emacsclient -c
 bind=ALT,P,exec,wofi
 bind=ALTSHIFT,P,exec,wofi --show run
 
