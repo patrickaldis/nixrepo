@@ -1,7 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
-# fish_vi_key_bindings
+fish_default_key_bindings
 
 any-nix-shell fish --info-right | source
 
