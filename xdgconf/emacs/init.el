@@ -178,9 +178,10 @@
 (setq inhibit-startup-message t)
 
 ;; THEME
-;; (load-theme 'dracula t)
+;; (load-theme prog'dracula t)
 
 ;; EDITOR
+(add-hook 'text-mode-hook 'display-line-numbers-mode) ;; DISPLAY LINE NOS
 (add-hook 'prog-mode-hook 'display-line-numbers-mode) ;; DISPLAY LINE NOS
 (global-hl-line-mode 1) ;; HIGHLIGHT LINES
 (set-default 'truncate-lines 0) ;; DO NOT WRAP
