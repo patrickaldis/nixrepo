@@ -10,7 +10,6 @@
 
       enabledExtensions = [
         "fullAppDisplay.js"
-        "hidePodcasts.js"
         "songStats.js"
         "keyboardShortcut.js"
         "fullAlbumDate.js"
