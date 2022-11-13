@@ -31,10 +31,7 @@
   :init (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
   :config (load-theme 'catppuccin-frappe t))
 
-;; (require 'centaur-tabs)
-;; (centaur-tabs-mode t)
-
-;; ;; PROJECT VIEWER
+;; PROJECT VIEWER
 (use-package treemacs
   :config
   (use-package treemacs-all-the-icons
@@ -49,23 +46,26 @@
 (use-package vterm)
 
 (use-package avy)
-(use-package ivy 
-  :init (use-package counsel)
+(use-package counsel 
   :config
-  (ivy-mode 1)
-  (use-package ivy-rich
-    :init 
+    (counsel-mode))
+    ;; (use-package counsel-projectile :config (counsel-projectile-mode)))
+(use-package ivy
     :config
-    (ivy-rich-mode 1)
-    (use-package all-the-icons-ivy-rich
+    (ivy-mode 1)
+    (use-package ivy-rich
+      :init 
+      :config
+      (ivy-rich-mode 1)
+      (use-package all-the-icons-ivy-rich
 	:init (use-package all-the-icons)
 	:config (all-the-icons-ivy-rich-mode 1)))
-  (use-package ivy-prescient
-    :init (use-package prescient)
-    :config (ivy-prescient-mode))
-   
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  :bind (:map ivy-minibuffer-map
+    (use-package ivy-prescient
+      :init (use-package prescient :config (prescient-persist-mode 1))
+      :config (ivy-prescient-mode) (setq ivy-prescient-retain-classic-highlighting t))
+    
+    (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+    :bind (:map ivy-minibuffer-map
 		("C-j" . ivy-next-line)
 		("C-k" . ivy-previous-line)))
 
@@ -178,7 +178,7 @@
 (setq inhibit-startup-message t)
 
 ;; THEME
-;; (load-theme prog'dracula t)
+;; (use-package dracula-theme :init (load-theme 'dracula t)) 
 
 ;; EDITOR
 (add-hook 'text-mode-hook 'display-line-numbers-mode) ;; DISPLAY LINE NOS
