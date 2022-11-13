@@ -56,17 +56,22 @@
       clapper
       foliate
       setzer
-      (emacsWithPackagesFromUsePackage {
-        package = pkgs.emacsPgtkNativeComp;
-        config = ./xdgconf/emacs/init.el;
-        alwaysEnsure = true;
+      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs:
+        [python3]
+        ++
+        [epkgs.vterm]
+      ))
+    #   (emacsWithPackagesFromUsePackage {
+    #     package = pkgs.emacsPgtkNativeComp;
+    #     config = ./xdgconf/emacs/init.el;
+    #     alwaysEnsure = true;
 
-        extraEmacsPackages = (epkgs:
-          (with pkgs;
-            [python3]
-          )
-        );
-      })
+    #     extraEmacsPackages = (epkgs:
+    #       (with pkgs;
+    #         [python3]
+    #       )
+    #     );
+    #   })
     ]
     ++
     (with inputs;
