@@ -62,6 +62,7 @@
       "fish/config.fish".source = ./xdgconf/fish/config.fish;
       "ranger/rifle.conf".source = ./xdgconf/ranger/rifle.conf;
       "qutebrowser/newwindow.sh".source = ./xdgconf/qute/open_url_in_instance.sh;
+      "qutebrowser/qutedaemon.sh".source = ./xdgconf/qute/qutedaemon.sh;
     };
 
     services.dunst = {

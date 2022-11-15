@@ -84,14 +84,4 @@
     dedicatedServer.openFirewall = true;
   };
   programs.kdeconnect.enable = true;
-
-  #QUTEBROWSER SCRIPT
-  systemd.services.qutedaemon = {
-    enable = true;
-    wantedBy = ["multi-user.target"];
-    serviceConfig = {
-      Exec= "qutebrowser -R --nowindow";
-      Restart="always";
-    };
-  };
 }
