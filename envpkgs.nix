@@ -87,9 +87,10 @@
 
   #QUTEBROWSER SCRIPT
   systemd.services.qutedaemon = {
+    enable = true;
+    wantedBy = ["multi-user.target"];
     serviceConfig = {
-      ExecStart= "qutebrowser -R --nowindow";
-      RestartSec="1s";
+      Exec= "qutebrowser -R --nowindow";
       Restart="always";
     };
   };
