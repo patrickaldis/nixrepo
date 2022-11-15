@@ -61,18 +61,7 @@
         ++
         [epkgs.vterm]
       ))
-    #   (emacsWithPackagesFromUsePackage {
-    #     package = pkgs.emacsPgtkNativeComp;
-    #     config = ./xdgconf/emacs/init.el;
-    #     alwaysEnsure = true;
-
-    #     extraEmacsPackages = (epkgs:
-    #       (with pkgs;
-    #         [python3]
-    #       )
-    #     );
-    #   })
-    ]
+      ]
     ++
     (with inputs;
     [#HYPRLAND UTILS
