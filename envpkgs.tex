@@ -1,0 +1,118 @@
+% Created 2022-11-16 Wed 14:34
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{John Doe}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={John Doe},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.0.50 (Org mode 9.6)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+\{lib, pkgs, config, inputs, \ldots{}\}:
+\{
+  environment.systemPackages =
+    with pkgs;
+    [\#CMD
+      ripgrep
+      socat
+      cmake
+      neofetch
+      pulseaudio
+      wget
+      neovim
+      killall
+      gnome.zenity
+      playerctl
+      gammastep
+      brightnessctl
+      any-nix-shell
+      gamescope
+      mangohud
+
+\#UTILTIES
+networkmanagerapplet
+pavucontrol
+blueberry
+baobab
+ranger
+
+\#LIB
+libappindicator-gtk3
+libappindicator-gtk2
+libayatana-appindicator-gtk3
+
+gnome.adwaita-icon-theme
+xdg-desktop-portal
+xdg-desktop-portal-gtk
+xdg-desktop-portal-wlr
+
+\#GNOME
+gnomeExtensions.appindicator
+
+  \#APPLICATIONS
+  spotify-unwrapped
+  discord
+  mailspring
+  thunderbird
+  lutris
+  wofi
+  (qutebrowser.override \{enableWideVine=true;\})
+  texlive.combined.scheme-basic
+  gnome.nautilus
+  gnome.evince
+  cinnamon.nemo
+  vscode
+  kitty
+  fragments
+  clapper
+  foliate
+  setzer
+  ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs:
+    [python3
+    ]
+    \sout{+
+    [epkgs.vterm]
+  ))
+  ]
++}
+(with inputs;
+[\#HYPRLAND UTILS
+  hyprcontrib.packages.x86\textsubscript{64}-linux.grimblast
+  hyprland.packages.x86\textsubscript{64}-linux.waybar-hyprland
+]
+);
+
+\#SERVICES
+services =
+\{
+  flatpak.enable = true;
+  lorri.enable = true;
+  udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+\};
+
+  programs.steam = \{
+    enable = true;
+    remotePlay.openFirewall = true; 
+    dedicatedServer.openFirewall = true;
+  \};
+  programs.kdeconnect.enable = true;
+\}
+\end{document}
