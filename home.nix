@@ -45,6 +45,64 @@
       theme = "Catppuccin-Frappe";
     };
 
+    programs.qutebrowser = {
+      enable = true;
+      package = (pkgs.qutebrowser.override {enableWideVine=true;});
+      settings = {
+        tabs = {
+          last_close = "close";
+          title.alignment = "center";
+          title.format = "{current_title}";
+          indicator.width = 0;
+        };
+        statusbar.show = "in-mode";
+        url = {
+          start_pages = "https://patrickaldis.github.io/newtabpage/";
+          default_page = "https://patrickaldis.github.io/newtabpage/";
+        };
+
+        fonts = {
+          default_family = "JetBrainsMono Nerd Font Mono";
+          tabs.selected = "12pt default_family";
+          tabs.unselected = "12pt default_family";
+        };
+
+        content.pdfjs = true;
+
+        downloads.remove_finished = 4000;
+
+        colors = {
+          downloads = {
+            bar.bg = "#11111b";
+          };
+          tabs = {
+            bar.bg = "#11111b";
+            even = {
+              bg = "#585b70";
+              fg = "#9399b2";
+            };
+            odd = {
+              bg = "#45475a";
+              fg = primary;
+            };
+            selected.even = {
+              bg = "#1e1e2e";
+              fg = "#cdd6f4";
+            };
+            selected.odd= {
+              bg = "#1e1e2e";
+              fg = "#cdd6f4";
+            };
+            indicator = {
+              system = "none";
+              error = "#f38ba8";
+            };
+          };
+        };
+      };
+      extraConfig = ''c.tabs.padding = {"bottom": 3, "left": 5, "right": 5, "top": 3}'';
+    };
+
     home.homeDirectory = "/home/patrickaldis";
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";

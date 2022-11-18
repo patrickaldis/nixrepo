@@ -46,7 +46,6 @@
       thunderbird
       lutris
       wofi
-      (qutebrowser.override {enableWideVine=true;})
       gnome.nautilus
       gnome.evince
       cinnamon.nemo
