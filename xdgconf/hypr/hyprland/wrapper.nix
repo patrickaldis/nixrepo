@@ -1,5 +1,5 @@
 let
-  theme = import /home/patrickaldis/.nixrepo/theme.nix;
+  theme = import ../../../theme.nix;
 in
 {
   xdg.configFile."hypr/hyprland.conf".text =
@@ -20,7 +20,7 @@ in
     gaps_out=6
     border_size=3
     col.active_border=0xB9${theme.primary}
-    col.inactive_border=0x66${theme.secondary}
+    col.inactive_border=0x66${theme.background}
     layout=master
     apply_sens_to_raw=0
   }

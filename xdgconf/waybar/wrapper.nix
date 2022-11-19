@@ -1,5 +1,5 @@
 let
-  theme = import /home/patrickaldis/.nixrepo/theme.nix;
+  theme = import ../../theme.nix;
 in
 {
   xdg.configFile = {
@@ -26,37 +26,37 @@ in
         }
         /*-----module groups----*/
         .modules-right {
-          background-color: ${theme.background};
+          background-color: #${theme.background};
             margin: 10px 8px 0 0;
             border-radius: 20px;
         }
         .modules-center {
-          background-color: ${theme.background};
+          background-color: #${theme.background};
             margin: 10px 0px 0 0;
             border-radius: 20px;
             font-size: 15px;
         }
         .modules-left {
             margin: 10px 0 0 8px;
-          background-color: ${theme.background};
+          background-color: #${theme.background};
             border-radius: 20px;
         }
         /*-----modules indv----*/
         #workspaces button {
             color: #ffffff;
-            background-color: ${theme.background};
+            background-color: #${theme.background};
             border-radius: 20px;
             padding: 1px 5px;
             margin: 3px 3px;
         }
         #workspaces button:hover {
             box-shadow: inherit;
-          background: ${theme.primary};
+          background: #${theme.primary};
         }
 
         #workspaces button.active {
-          background: ${theme.primary};
-            color: ${theme.background};
+          background: #${theme.primary};
+            color: #${theme.background};
         }
         button {
             color: #ffffff;
@@ -64,7 +64,7 @@ in
             border-radius: 20px;
         }
         button:hover {
-            color: ${theme.primary};
+            color: #${theme.primary};
             border-radius: 20px;
             background: #303446;
             box-shadow: inherit;
@@ -90,30 +90,30 @@ in
             font-size: 15px;
         }
         #mode {
-            color: ${theme.primary};
+            color: #${theme.primary};
             font-weight: bold;
         }
         #custom-power {
-            background-color: ${theme.primary};
-            color: ${theme.background};
+            background-color: #${theme.primary};
+            color: #${theme.background};
             border-radius: 50px;
             padding: 0px 7px;
             font-size: 20px;
             margin: 3px 3px;
         }
         #custom-power:hover {
-            color: ${theme.primary};
+            color: #${theme.primary};
             background: #303446;
         }
         /*-----Indicators----*/
         #idle_inhibitor.activated {
-            color: ${theme.primary};
+            color: #${theme.primary};
         }
         #pulseaudio.muted {
-            color: ${theme.primary};
+            color: #${theme.primary};
         }
         #battery.charging {
-            color: ${theme.primary};
+            color: #${theme.primary};
         }
         #battery.warning:not(.charging) {
           color: #e6e600;
