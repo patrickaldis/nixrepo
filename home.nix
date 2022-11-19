@@ -1,8 +1,12 @@
-{pkgs, spicetify-nix, ...}:{
+{pkgs, spicetify-nix, ...}:
+let
+  theme = import ./theme.nix;
+in
+{
     imports = [
       spicetify-nix.homeManagerModule
       ./xdgconf/hypr/hyprland/wrapper.nix
-      ./theme.nix
+      ./xdgconf/waybar/wrapper.nix
     ];
 
     programs.spicetify = {
@@ -87,7 +91,7 @@
             };
             odd = {
               bg = "#45475a";
-              fg = primary;
+              fg = "#9399b2";
             };
             selected.even = {
               bg = "#1e1e2e";
@@ -118,7 +122,6 @@
     xdg.configFile = {
       "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper.conf;
       "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
-      "waybar".source = ./xdgconf/waybar;
       "wofi".source = ./xdgconf/wofi;
       "dunst".source = ./xdgconf/dunst;
       "fish/config.fish".source = ./xdgconf/fish/config.fish;
