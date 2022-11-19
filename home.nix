@@ -7,6 +7,8 @@ in
       spicetify-nix.homeManagerModule
       ./xdgconf/hypr/hyprland/wrapper.nix
       ./xdgconf/waybar/wrapper.nix
+      ./xdgconf/dunst/wrapper.nix
+      ./xdgconf/wofi/wrapper.nix
     ];
 
     programs.spicetify = {
@@ -122,8 +124,8 @@ in
     xdg.configFile = {
       "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper.conf;
       "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
-      "wofi".source = ./xdgconf/wofi;
-      "dunst".source = ./xdgconf/dunst;
+      # "wofi".source = ./xdgconf/wofi;
+      # "dunst".source = ./xdgconf/dunst;
       "fish/config.fish".source = ./xdgconf/fish/config.fish;
       "ranger/rifle.conf".source = ./xdgconf/ranger/rifle.conf;
       "qutebrowser/newwindow.sh".source = ./xdgconf/qute/open_url_in_instance.sh;
