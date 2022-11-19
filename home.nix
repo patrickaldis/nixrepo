@@ -126,6 +126,7 @@ in
       "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
       # "wofi".source = ./xdgconf/wofi;
       # "dunst".source = ./xdgconf/dunst;
+      "stig".source = ./xdgconf/stig;
       "fish/config.fish".source = ./xdgconf/fish/config.fish;
       "ranger/rifle.conf".source = ./xdgconf/ranger/rifle.conf;
       "qutebrowser/newwindow.sh".source = ./xdgconf/qute/open_url_in_instance.sh;

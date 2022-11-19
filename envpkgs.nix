@@ -52,6 +52,7 @@
       vscode
       kitty
       fragments
+      stig
       clapper
       foliate
       setzer
