@@ -22,6 +22,7 @@
       #UTILTIES
       networkmanagerapplet
       pavucontrol
+      pdfarranger
       blueberry
       baobab
       ranger
