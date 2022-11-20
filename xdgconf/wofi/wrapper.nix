@@ -3,12 +3,12 @@ let
 in
 {
   xdg.configFile = {
-    "config".source = ./config;
-    "style.css".text =
+    "wofi/config".source = ./config;
+    "wofi/style.css".text =
       ''
         window {
         margin: 0px;
-        border: 2px solid ##${theme.primary};
+        border: 2px solid #${theme.primary};
         background-color: #282a36;
         font-family: JetBrainsMono Nerd Font Mono;
         border-radius: 10px;
