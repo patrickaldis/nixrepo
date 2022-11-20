@@ -30,5 +30,13 @@
 
   hardware.bluetooth.enable = true;                                 #SOUND
   hardware.opengl.driSupport32Bit = true;
+  virtualisation.vmVariant = {
+    # following configuration is added only when building VM with build-vm
+    virtualisation = {
+      memorySize =  8000; # Use 2048MiB memory.
+      cores = 4;
+      qemu.options = ["-vga none" "-device virtio-vga-gl" "-display gtk,gl=on"];
+    };
+  };
   security.rtkit.enable = true;
 }
