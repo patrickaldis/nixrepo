@@ -120,9 +120,10 @@ in
     # home.file.".emacs.d/init.el".source = ./xdgconf/emacs/init.el;
     home.file.".emacs.d/themes/catppuccin-frappe-theme.el".source = ./xdgconf/emacs/catppuccin-frappe-theme.el;
     home.file.".themes/CatppuccinFrappe".source = ./xdgconf/gtk/Catppuccin-Frappe-Pink/Catppuccin-Frappe-Pink;
+    home.file."Pictures/someday_UltraHD.png".source = ./xdgconf/hypr/hyprpaper/someday_UltraHD.png;
 
     xdg.configFile = {
-      "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper.conf;
+      "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper/hyprpaper.conf;
       "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
       # "wofi".source = ./xdgconf/wofi;
       # "dunst".source = ./xdgconf/dunst;
