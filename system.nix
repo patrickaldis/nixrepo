@@ -16,7 +16,10 @@
     packages = with pkgs; [ terminus_font ];
   };
 
-  virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    kvmgt.enable = true;
+  };
 
   networking = {
     hostName = "nixos";                                    #NETWORKING
@@ -35,7 +38,7 @@
     virtualisation = {
       memorySize =  8000; # Use 2048MiB memory.
       cores = 4;
-      qemu.options = ["-vga none" "-device virtio-vga-gl" "-display gtk,gl=on"];
+      qemu.options = [ "-device virtio-vga-gl" "-display gtk,gl=on"];
     };
   };
   security.rtkit.enable = true;
