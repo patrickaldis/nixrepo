@@ -31,6 +31,7 @@
       libappindicator-gtk3
       libappindicator-gtk2
       libayatana-appindicator-gtk3
+      texlive.combined.scheme-full
 
       gnome.adwaita-icon-theme
       xdg-desktop-portal
