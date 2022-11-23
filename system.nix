@@ -2,12 +2,15 @@
 {
   system.stateVersion = "22.05";
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;                      #BOOT
-    efi.efiSysMountPoint = "/boot/efi";
-    systemd-boot = {
-      enable = true;
-      consoleMode = "1";
+  boot = {
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    loader = {
+      efi.canTouchEfiVariables = true;                      #BOOT
+      efi.efiSysMountPoint = "/boot/efi";
+      systemd-boot = {
+        enable = true;
+        consoleMode = "1";
+      };
     };
   };
   console = {
