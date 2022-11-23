@@ -14,7 +14,8 @@
     GDK_SCALE="2";
     WLR_RENDERER_ALLOW_SOFTWARE="1";
     TERMCMD="kitty";
-    EDITOR="nvim";
+    EDITOR="vim";
+    PAGER="vimpager";
     fish_greeting="";
   };
   services.cron = {

@@ -9,7 +9,8 @@
       neofetch
       pulseaudio
       wget
-      neovim
+      vim
+      vimpager
       killall
       gnome.zenity
       playerctl
