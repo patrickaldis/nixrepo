@@ -9,8 +9,8 @@
       neofetch
       pulseaudio
       wget
-      vim
-      vimpager
+      neovim
+      nvimpager
       killall
       gnome.zenity
       playerctl
@@ -33,6 +33,7 @@
       libappindicator-gtk2
       libayatana-appindicator-gtk3
       texlive.combined.scheme-full
+      appimage-run
 
       gnome.adwaita-icon-theme
       xdg-desktop-portal
@@ -53,6 +54,7 @@
       gnome.evince
       cinnamon.nemo
       vscode
+      mixxx
       kitty
       fragments
       stig
