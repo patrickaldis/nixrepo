@@ -134,6 +134,18 @@ in
       "qutebrowser/qutedaemon.sh".source = ./xdgconf/qute/qutedaemon.sh;
     };
 
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = ["org.gnome.Evince.desktop"];
+        "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
+        "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
+      };
+    };
+
     services.dunst = {
       enable = true;
     };
