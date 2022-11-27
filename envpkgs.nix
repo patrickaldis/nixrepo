@@ -20,6 +20,10 @@
       gamescope
       mangohud
 
+      #CODING
+      ghc
+      haskell-language-server
+
       #UTILTIES
       networkmanagerapplet
       pavucontrol
