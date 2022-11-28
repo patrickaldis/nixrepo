@@ -1,5 +1,5 @@
 let
-  theme = import ../../theme.nix;
+  theme = import ../../shared/theme.nix;
 in
 {
   xdg.configFile = {

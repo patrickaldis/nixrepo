@@ -1,15 +1,15 @@
 {pkgs, spicetify-nix, ...}:
 let
   theme = import ./theme.nix;
-  dotfiles = ./xdgconf;
+  dotfiles = ../xdgconf;
 in
 {
     imports = [
       spicetify-nix.homeManagerModule
-      ./xdgconf/hypr/hyprland/wrapper.nix
-      ./xdgconf/waybar/wrapper.nix
-      ./xdgconf/dunst/wrapper.nix
-      ./xdgconf/wofi/wrapper.nix
+      ../xdgconf/hypr/hyprland/wrapper.nix
+      ../xdgconf/waybar/wrapper.nix
+      ../xdgconf/dunst/wrapper.nix
+      ../xdgconf/wofi/wrapper.nix
     ];
 
     programs.spicetify = {

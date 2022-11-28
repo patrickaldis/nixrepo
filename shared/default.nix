@@ -11,7 +11,6 @@
       ./services.nix
       ./system.nix
       ./envpkgs.nix
-      ./hardware-configuration.nix
     ];
   
   #DEVICE CONFIGURATION

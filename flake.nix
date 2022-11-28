@@ -19,7 +19,7 @@
   };
 
   outputs = { self, nixpkgs, hyprland, hyprcontrib, spicetify-nix, home-manager, ...}@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixosxps15 = nixpkgs.lib.nixosSystem {
       system= "x86_64-linux";
       modules = [
         hyprland.nixosModules.default
@@ -29,10 +29,29 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.patrickaldis = import ./home.nix;
+            home-manager.users.patrickaldis = import ./shared/home.nix;
             home-manager.extraSpecialArgs = inputs;
           }
-        ./configuration.nix
+        ./shared
+        ./hosts/xps9560.nix
+      ];
+      specialArgs.inputs = inputs;
+    };
+    nixosConfigurations.nixosdesktop = nixpkgs.lib.nixosSystem {
+      system= "x86_64-linux";
+      modules = [
+        hyprland.nixosModules.default
+        { programs.hyprland.enable = true;
+        }
+        home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.patrickaldis = import ./shared/home.nix;
+            home-manager.extraSpecialArgs = inputs;
+          }
+        ./shared
+        ./hosts/desktop.nix
       ];
       specialArgs.inputs = inputs;
     };
