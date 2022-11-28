@@ -78,8 +78,6 @@ in
           tabs.unselected = "12pt default_family";
         };
 
-        content.pdfjs = true;
-
         downloads.remove_finished = 4000;
 
         colors = {
