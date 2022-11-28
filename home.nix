@@ -1,6 +1,7 @@
 {pkgs, spicetify-nix, ...}:
 let
   theme = import ./theme.nix;
+  dotfiles = ./xdgconf;
 in
 {
     imports = [
@@ -116,34 +117,39 @@ in
     home.homeDirectory = "/home/patrickaldis";
     home.packages = with pkgs; [ git lutris];
     home.stateVersion = "22.05";
-    home.file.".internet/comodo.pem".source = ./xdgconf/internet/comodo.pem;
-    # home.file.".emacs.d/init.el".source = ./xdgconf/emacs/init.el;
-    home.file.".emacs.d/themes/catppuccin-frappe-theme.el".source = ./xdgconf/emacs/catppuccin-frappe-theme.el;
-    home.file.".themes/CatppuccinFrappe".source = ./xdgconf/gtk/Catppuccin-Frappe-Pink/Catppuccin-Frappe-Pink;
-    home.file."Pictures/someday_UltraHD.png".source = ./xdgconf/hypr/hyprpaper/someday_UltraHD.png;
+    # Config Files:
+    home.file.".internet/comodo.pem".source = "${dotfiles}/internet/comodo.pem";
+    # home.file.".emacs.d/init.el".source = "${dotfiles}/emacs/init.el";
+    home.file.".emacs.d/themes/catppuccin-frappe-theme.el".source = "${dotfiles}/emacs/catppuccin-frappe-theme.el";
+    home.file.".themes/CatppuccinFrappe".source = "${dotfiles}/gtk/Catppuccin-Frappe-Pink/Catppuccin-Frappe-Pink";
+    home.file."Pictures/someday_UltraHD.png".source = "${dotfiles}/hypr/hyprpaper/someday_UltraHD.png";
 
     xdg.configFile = {
-      "hypr/hyprpaper.conf".source = ./xdgconf/hypr/hyprpaper/hyprpaper.conf;
-      "hypr/batteryscript.sh".source = ./xdgconf/hypr/batteryscript.sh;
-      # "wofi".source = ./xdgconf/wofi;
-      # "dunst".source = ./xdgconf/dunst;
-      "stig".source = ./xdgconf/stig;
-      "fish/config.fish".source = ./xdgconf/fish/config.fish;
-      "ranger/rifle.conf".source = ./xdgconf/ranger/rifle.conf;
-      "qutebrowser/newwindow.sh".source = ./xdgconf/qute/open_url_in_instance.sh;
-      "qutebrowser/qutedaemon.sh".source = ./xdgconf/qute/qutedaemon.sh;
+      "hypr/hyprpaper.conf".source = "${dotfiles}/hypr/hyprpaper/hyprpaper.conf";
+      "hypr/batteryscript.sh".source = "${dotfiles}/hypr/batteryscript.sh";
+      # "wofi".source = "${dotfiles}/wofi";
+      # "dunst".source = "${dotfiles}/dunst";
+      "stig".source = "${dotfiles}/stig";
+      "fish/config.fish".source = "${dotfiles}/fish/config.fish";
+      "ranger/rifle.conf".source = "${dotfiles}/ranger/rifle.conf";
+      "qutebrowser/newwindow.sh".source = "${dotfiles}/qute/open_url_in_instance.sh";
     };
 
     xdg.mimeApps = {
       enable = true;
-      defaultApplications = {
-        "application/pdf" = ["org.gnome.Evince.desktop"];
-        "text/html" = ["org.qutebrowser.qutebrowser.desktop"];
-        "x-scheme-handler/http" = ["org.qutebrowser.qutebrowser.desktop"];
-        "x-scheme-handler/https" = ["org.qutebrowser.qutebrowser.desktop"];
-        "x-scheme-handler/about" = ["org.qutebrowser.qutebrowser.desktop"];
-        "x-scheme-handler/unknown" = ["org.qutebrowser.qutebrowser.desktop"];
-      };
+      defaultApplications =
+        let
+          browser = "org.qutebrowser.qutebrowser.desktop";
+          pdf = "org.gnome.Evince.desktop";
+        in
+        {
+          "application/pdf" = [pdf];
+          "text/html" = [browser];
+          "x-scheme-handler/http" = [browser];
+          "x-scheme-handler/https" = [browser];
+          "x-scheme-handler/about" = [browser];
+          "x-scheme-handler/unknown" = [browser];
+        };
     };
 
     services.dunst = {
