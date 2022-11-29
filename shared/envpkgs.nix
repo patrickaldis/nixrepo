@@ -39,6 +39,7 @@
       libayatana-appindicator-gtk3
       texlive.combined.scheme-full
       appimage-run
+      ispell
 
       gnome.adwaita-icon-theme
       xdg-desktop-portal
