@@ -10,6 +10,7 @@
       pulseaudio
       wget
       neovim
+      swayidle
       nvimpager
       killall
       gnome.zenity
