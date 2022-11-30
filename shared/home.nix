@@ -65,6 +65,7 @@ in
           title.alignment = "center";
           title.format = "{current_title}";
           indicator.width = 0;
+          new_position.unrelated = "next";
         };
         statusbar.show = "in-mode";
         url = {
