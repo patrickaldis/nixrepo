@@ -1,4 +1,14 @@
 {lib, pkgs, config, inputs, ...}:
+let
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive) scheme-basic
+      dvisvgm dvipng # for preview and export as html
+      xcolor parskip etoolbox bibtex
+      wrapfig amsmath ulem hyperref capt-of;
+      #(setq org-latex-compiler "lualatex")
+      #(setq org-preview-latex-default-process 'dvisvgm)
+  });
+in
 {
   environment.systemPackages =
     with pkgs;
@@ -38,6 +48,7 @@
       libappindicator-gtk2
       libayatana-appindicator-gtk3
       texlive.combined.scheme-full
+      # tex
       appimage-run
       ispell
 
@@ -67,11 +78,11 @@
       clapper
       foliate
       setzer
-      ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs:
-        [python3]
-        ++
-        [epkgs.vterm]
-      ))
+      # ((emacsPackagesFor emacs).emacsWithPackages (epkgs:
+      #   [python3]
+      #   ++
+      #   [epkgs.vterm]
+      # ))
       ]
     ++
     (with inputs;

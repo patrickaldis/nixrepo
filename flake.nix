@@ -16,9 +16,10 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = { self, nixpkgs, hyprland, hyprcontrib, spicetify-nix, home-manager, ...}@inputs: {
+  outputs = { self, nixpkgs, hyprland, hyprcontrib, spicetify-nix, home-manager, nix-doom-emacs,...}@inputs: {
     nixosConfigurations.nixosxps15 = nixpkgs.lib.nixosSystem {
       system= "x86_64-linux";
       modules = [

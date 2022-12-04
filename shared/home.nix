@@ -1,4 +1,4 @@
-{pkgs, spicetify-nix, ...}:
+{pkgs, spicetify-nix, nix-doom-emacs, ...}:
 let
   theme = import ./theme.nix;
   dotfiles = ../xdgconf;
@@ -6,6 +6,7 @@ in
 {
     imports = [
       spicetify-nix.homeManagerModule
+      nix-doom-emacs.hmModule
       ../xdgconf/hypr/hyprland/wrapper.nix
       ../xdgconf/waybar/wrapper.nix
       ../xdgconf/dunst/wrapper.nix
@@ -30,6 +31,11 @@ in
       ];
       enabledCustomApps = with spicetify-nix.pkgSets.${pkgs.system}.apps;
         [marketplace];
+    };
+
+    programs.doom-emacs = {
+      enable = true;
+      doomPrivateDir = ../xdgconf/doom;
     };
   
     programs.firefox = {
