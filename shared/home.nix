@@ -36,6 +36,7 @@ in
     programs.doom-emacs = {
       enable = true;
       doomPrivateDir = ../xdgconf/doom;
+      # emacsPackages = pkgs.emacsPackagesFor (pkgs.emacs.override { withPgtk = true; });
     };
   
     programs.firefox = {
