@@ -1,17 +1,18 @@
 let
   theme = import ../../../shared/theme.nix;
 in
-{
+{customSettings, ...}:{
   xdg.configFile."hypr/hyprland.conf".text =
 ''
   #AUTO GENERATED NIX VALUES:
-  ${if true then
+  ${if customSettings.hiDPI then
     ''
-      monitor=,preferred,auto,2
+      monitor=,highrr,auto,2
+      exec-once=xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 32c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 2
     ''
     else
     ''
-      monitor=,preferred,auto,1
+      monitor=,highrr,auto,1
     ''
    }
   #COLORS:

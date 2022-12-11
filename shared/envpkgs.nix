@@ -43,6 +43,7 @@ in
       blueberry
       baobab
       ranger
+      noisetorch
 
       #LIB
       libappindicator-gtk3
@@ -102,6 +103,7 @@ in
     udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
   };
 
+  programs.noisetorch.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; 

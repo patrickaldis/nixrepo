@@ -31,7 +31,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.patrickaldis = import ./shared/home.nix;
-            home-manager.extraSpecialArgs = inputs;
+            home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
+              [inputs
+               {customSettings.hiDPI = true;}
+              ]);
           }
         ./shared
         ./hosts/xps9560.nix
@@ -49,7 +52,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.patrickaldis = import ./shared/home.nix;
-            home-manager.extraSpecialArgs = inputs;
+            home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
+              [inputs
+               {customSettings.hiDPI = false;}
+              ]);
           }
         ./shared
         ./hosts/desktop.nix
