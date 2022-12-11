@@ -21,6 +21,7 @@ in
       wget
       neovim
       swayidle
+      swaybg
       nvimpager
       killall
       gnome.zenity
