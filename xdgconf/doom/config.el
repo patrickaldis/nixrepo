@@ -9,6 +9,14 @@
       user-mail-address "john@doe.com")
 (setq text-quoting-style "grave")
 (setq byte-compile-warnings nil)
+(setq doom-modeline-major-mode-icon t)
+(setq org-preview-latex-default-process 'dvisvgm)
+(defadvice org-export-output-file-name (before org-add-export-dir activate)
+  "Modifies org-export to place exported files in a different directory"
+  (when (not pub-dir)
+      (setq pub-dir "exports")
+      (when (not (file-directory-p pub-dir))
+       (make-directory pub-dir))))
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -69,6 +77,7 @@
 (use-package! all-the-icons-completion :after vertico :config (all-the-icons-completion-mode))
 (use-package! treemacs-all-the-icons :after treemacs :config (setq doom-themes-treemacs-theme "all-the-icons"))
 (use-package! helm-icons :after helm :config (helm-icons-enable))
+(after! whitespace (setq whitespace-style '(face tabs tab-mark spaces space-mark trailing lines-tail)))
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 28)) ;;
 (setq doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 28)) ;;
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
