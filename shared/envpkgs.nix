@@ -71,6 +71,7 @@ in
       gnome.nautilus
       gnome.evince
       cinnamon.nemo
+      gimp
       vscode
       mixxx
       kitty
