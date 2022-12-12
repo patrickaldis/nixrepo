@@ -13,6 +13,12 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  #BOOTLOADER
+  systemd-boot = {
+    enable = true;
+    consoleMode = "1";
+  };
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/5fd01aac-543d-4519-b4c4-1746a7c70644";
       fsType = "ext4";

@@ -13,6 +13,54 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  #BOOTLOADER
+  boot.loader.grub = {
+    efiSupport = true;
+    device= "nodev";
+    gfxmodeEfi = "2560x1440x32";
+    extraEntries = ''
+
+    menuentry "Windows 10" {
+      insmod part_gpt
+      insmod fat
+      search --no-floppy --fs-uuid --set=root 96D9-B9DB
+      chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+    }
+    '';
+    extraEntriesBeforeNixOS = true;
+    default = 1;
+    font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+    fontSize = 28;
+  };
+
+  systemd.tmpfiles.rules = [
+    "L+ /run/gdm/.config/monitors.xml - - - - ${pkgs.writeText "gdm-monitors.xml" ''
+    <monitors version="2">
+      <configuration>
+        <logicalmonitor>
+          <x>0</x>
+          <y>0</y>
+          <scale>1</scale>
+          <primary>yes</primary>
+          <monitor>
+            <monitorspec>
+              <connector>DP-1</connector>
+              <vendor>MSI</vendor>
+              <product>MSI MPG273CQR</product>
+              <serial>0x00000138</serial>
+            </monitorspec>
+            <mode>
+              <width>2560</width>
+              <height>1440</height>
+              <rate>164.802</rate>
+            </mode>
+          </monitor>
+        </logicalmonitor>
+      </configuration>
+    </monitors>
+    ''}"
+  ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/c778f3d2-4dbd-429a-87bd-a3ec612f2f33";
       fsType = "ext4";

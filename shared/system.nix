@@ -7,10 +7,6 @@
     loader = {
       efi.canTouchEfiVariables = true;                      #BOOT
       efi.efiSysMountPoint = "/boot/efi";
-      systemd-boot = {
-        enable = true;
-        consoleMode = "1";
-      };
     };
   };
   console = {
