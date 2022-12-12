@@ -42,6 +42,11 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
+;; FONT STUFF
+(setq fontsize (/ (display-pixel-height) 80))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size fontsize)) ;;
+(setq doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size fontsize)) ;;
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -78,8 +83,6 @@
 (use-package! treemacs-all-the-icons :after treemacs :config (setq doom-themes-treemacs-theme "all-the-icons"))
 (use-package! helm-icons :after helm :config (helm-icons-enable))
 (after! whitespace (setq whitespace-style '(face tabs tab-mark spaces space-mark trailing lines-tail)))
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 28)) ;;
-(setq doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 28)) ;;
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
     backup-by-copying t    ; Don't delink hardlinks
     version-control t      ; Use version numbers on backups
