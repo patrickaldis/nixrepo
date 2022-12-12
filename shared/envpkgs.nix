@@ -81,11 +81,7 @@ in
       clapper
       foliate
       setzer
-      # ((emacsPackagesFor emacs).emacsWithPackages (epkgs:
-      #   [python3]
-      #   ++
-      #   [epkgs.vterm]
-      # ))
+      nyxt
       ]
     ++
     (with inputs;
