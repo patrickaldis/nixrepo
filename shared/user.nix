@@ -1,4 +1,4 @@
-{pkgs, config,...}:
+{pkgs, config, customSettings, ...}:
 {
   users.users.patrickaldis = {                                      #USERS
     description = "Patrick Aldis";
@@ -11,7 +11,7 @@
   users.defaultUserShell = pkgs.fish;                               #SHELL
   environment.shells = with pkgs; [ fish ];
   environment.sessionVariables = rec {
-    GDK_SCALE="2";
+    GDK_SCALE="${if customSettings.hiDPI then "2" else "1"}";
     WLR_RENDERER_ALLOW_SOFTWARE="1";
     TERMCMD="kitty";
     EDITOR="nvim";

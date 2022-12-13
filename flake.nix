@@ -40,6 +40,7 @@
         ./hosts/xps9560.nix
       ];
       specialArgs.inputs = inputs;
+      specialArgs.customSettings.hiDPI = true;
     };
     nixosConfigurations.nixosdesktop = nixpkgs.lib.nixosSystem {
       system= "x86_64-linux";
@@ -61,6 +62,7 @@
         ./hosts/desktop.nix
       ];
       specialArgs.inputs = inputs;
+      specialArgs.customSettings.hiDPI = false;
     };
   };
 }
