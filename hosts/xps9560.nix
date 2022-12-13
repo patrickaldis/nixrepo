@@ -14,9 +14,12 @@
   boot.extraModulePackages = [ ];
 
   #BOOTLOADER
-  systemd-boot = {
+  boot.loader.grub = {
     enable = true;
-    consoleMode = "1";
+    efiSupport = true;
+    device= "nodev";
+    font = "${pkgs.jetbrains-mono}/share/fonts/truetype/JetBrainsMono-Regular.ttf";
+    fontSize = 40;
   };
 
   fileSystems."/" =
