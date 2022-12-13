@@ -55,9 +55,6 @@ in
       ispell
 
       gnome.adwaita-icon-theme
-      xdg-desktop-portal
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
 
       #GNOME
       gnomeExtensions.appindicator
@@ -97,6 +94,15 @@ in
     flatpak.enable = true;
     lorri.enable = true;
     udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+    gtkUsePortal = true;
   };
 
   programs.noisetorch.enable = true;
