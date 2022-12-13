@@ -43,7 +43,7 @@
 (setq doom-theme 'doom-one)
 
 ;; FONT STUFF
-(setq fontsize (/ (display-pixel-height) 80))
+(setq fontsize 28)
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size fontsize)) ;;
 (setq doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size fontsize)) ;;
 
