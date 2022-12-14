@@ -139,6 +139,7 @@ in
       "fish/config.fish".source = "${dotfiles}/fish/config.fish";
       "ranger/rifle.conf".source = "${dotfiles}/ranger/rifle.conf";
       "qutebrowser/newwindow.sh".source = "${dotfiles}/qute/open_url_in_instance.sh";
+      "qutebrowser/qutedaemon.sh".source = "${dotfiles}/qute/qutedaemon.sh";
     };
 
     xdg.mimeApps = {
