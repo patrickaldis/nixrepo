@@ -13,6 +13,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  networking.hostName = "nixos-xps15";
+
   #BOOTLOADER
   boot.loader.grub = {
     enable = true;

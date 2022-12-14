@@ -13,6 +13,8 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  networking.hostName = "nixos-desktop";
+
   #BOOTLOADER
   boot.loader.grub = {
     efiSupport = true;

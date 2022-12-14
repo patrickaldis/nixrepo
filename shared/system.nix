@@ -21,7 +21,6 @@
   };
 
   networking = {
-    hostName = "nixos";                                    #NETWORKING
     enableIPv6 = false;
     networkmanager.enable = true;
   };
