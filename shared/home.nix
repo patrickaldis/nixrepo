@@ -85,36 +85,67 @@ in
           tabs.unselected = "12pt default_family";
         };
 
+        content.javascript.can_access_clipboard = true;
+
         downloads.remove_finished = 4000;
 
         colors = {
           downloads = {
-            bar.bg = "#11111b";
+            bar.bg = "#${theme.background}";
           };
           tabs = {
-            bar.bg = "#11111b";
+            bar.bg = "#${theme.background}";
             even = {
-              bg = "#585b70";
-              fg = "#9399b2";
+              bg = "#${theme.background''}";
+              fg = "#${theme.neutral}";
             };
             odd = {
-              bg = "#45475a";
-              fg = "#9399b2";
+              bg = "#${theme.background'}";
+              fg = "#${theme.neutral}";
             };
             selected.even = {
-              bg = "#1e1e2e";
-              fg = "#cdd6f4";
+              bg = "#${theme.background}";
+              fg = "#${theme.secondary}";
             };
             selected.odd= {
-              bg = "#1e1e2e";
-              fg = "#cdd6f4";
+              bg = "#${theme.background}";
+              fg = "#${theme.secondary}";
             };
             indicator = {
               system = "none";
               error = "#f38ba8";
             };
           };
+          completion ={
+            category = {
+              bg = "#${theme.background}";
+              fg = "#${theme.tertiary}";
+            };
+            even = {
+              bg = "#${theme.background''}";
+            };
+            odd = {
+              bg = "#${theme.background'}";
+            };
+            item.selected = {
+              bg = "#${theme.tertiary}";
+              fg = "#${theme.background'}";
+            };
+            match.fg = "#${theme.primary}";
+          };
+
+          hints = {
+            bg = "#${theme.tertiary}";
+            fg = "#${theme.background'}";
+            match.fg = "#${theme.primary}";
+          };
+
+          statusbar.url = {
+            success.http.fg = "#${theme.tertiary}";
+            success.https.fg = "#${theme.primary}";
+          };
         };
+        hints.border = "1px solid #${theme.background'}";
       };
       extraConfig = ''c.tabs.padding = {"bottom": 3, "left": 5, "right": 5, "top": 3}'';
     };
