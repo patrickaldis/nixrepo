@@ -90,9 +90,11 @@ in
         downloads.remove_finished = 4000;
 
         colors = {
+
           downloads = {
             bar.bg = "#${theme.background}";
           };
+
           tabs = {
             bar.bg = "#${theme.background}";
             even = {
@@ -116,7 +118,8 @@ in
               error = "#f38ba8";
             };
           };
-          completion ={
+
+          completion = {
             category = {
               bg = "#${theme.background}";
               fg = "#${theme.tertiary}";
@@ -144,7 +147,11 @@ in
             success.http.fg = "#${theme.tertiary}";
             success.https.fg = "#${theme.primary}";
           };
+
+          webpage.bg = "#${theme.background}";
+          webpage.preferred_color_scheme = "dark";
         };
+
         hints.border = "1px solid #${theme.background'}";
       };
       extraConfig = ''c.tabs.padding = {"bottom": 3, "left": 5, "right": 5, "top": 3}'';
