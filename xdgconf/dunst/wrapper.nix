@@ -1,7 +1,4 @@
-let
-  theme = import ../../shared/theme.nix;
-in
-{
+{theme, ...}:{
   xdg.configFile."dunst/dunstrc".text =
   ''
     [global]

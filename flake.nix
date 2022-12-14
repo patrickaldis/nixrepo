@@ -34,6 +34,7 @@
             home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
               [inputs
                {customSettings.hiDPI = true;}
+               {theme = import ./shared/theme.nix;}
               ]);
           }
         ./shared

@@ -1,7 +1,4 @@
-let
-  theme = import ../../shared/theme.nix;
-in
-{
+{theme, ...}:{
   xdg.configFile = {
     "waybar/config".source = ./config;
     "waybar/logout".source = ./logout;

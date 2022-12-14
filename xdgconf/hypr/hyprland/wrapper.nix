@@ -1,7 +1,4 @@
-let
-  theme = import ../../../shared/theme.nix;
-in
-{customSettings, ...}:{
+{customSettings, theme, ...}:{
   xdg.configFile."hypr/hyprland.conf".text =
 ''
   #AUTO GENERATED NIX VALUES:

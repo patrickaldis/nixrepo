@@ -1,6 +1,5 @@
-{pkgs, spicetify-nix, nix-doom-emacs, ...}:
+{pkgs, spicetify-nix, nix-doom-emacs, theme, ...}:
 let
-  theme = import ./theme.nix;
   dotfiles = ../xdgconf;
 in
 {

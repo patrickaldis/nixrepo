@@ -1,7 +1,4 @@
-let
-  theme = import ../../shared/theme.nix;
-in
-{
+{theme, ...}:{
   xdg.configFile = {
     "wofi/config".source = ./config;
     "wofi/style.css".text =
