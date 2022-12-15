@@ -82,7 +82,9 @@
 (use-package! all-the-icons-completion :after vertico :config (all-the-icons-completion-mode))
 (use-package! treemacs-all-the-icons :after treemacs :config (setq doom-themes-treemacs-theme "all-the-icons"))
 (use-package! helm-icons :after helm :config (helm-icons-enable))
-(after! whitespace (setq whitespace-style '(face tabs tab-mark spaces space-mark trailing lines-tail)))
+(after! whitespace
+  (setq whitespace-style '(face tabs tab-mark spaces space-mark trailing lines-tail indentation))
+  (global-whitespace-mode t))
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
     backup-by-copying t    ; Don't delink hardlinks
     version-control t      ; Use version numbers on backups
