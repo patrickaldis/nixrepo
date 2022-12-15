@@ -1,0 +1,1 @@
+/home/patrickaldis/.nixrepo/xdgconf/doom/init.el

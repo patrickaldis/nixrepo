@@ -35,6 +35,7 @@ in
     programs.doom-emacs = {
       enable = true;
       doomPrivateDir = ../xdgconf/doom;
+      doomPackageDir = ../xdgconf/doompkgs;
       # emacsPackages = pkgs.emacsPackagesFor (pkgs.emacs.override { withPgtk = true; });
     };
   
