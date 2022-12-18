@@ -13,6 +13,8 @@
 
 (setq org-preview-latex-default-process 'dvisvgm)
 (setq org-directory "~/Documents/Notes")
+(setq org-agenda-files "~/Documents/Notes/Agenda")
+
 (defadvice org-export-output-file-name (before org-add-export-dir activate)
   "Modifies org-export to place exported files in a different directory"
   (when (not pub-dir)
@@ -69,6 +71,9 @@
 (map! :after hydra
       :map evil-window-map
       :desc "open window hydra" "w" #'+hydra/window-nav/body)
+(map! :after lsp
+      :map doom-leader-code-map
+      :desc "Format Buffer/Line" "f" #'lsp-format-region)
 (after! treemacs (treemacs-project-follow-mode))
 (after! treemacs (setq treemacs-show-cursor t))
 (map! :after treemacs
