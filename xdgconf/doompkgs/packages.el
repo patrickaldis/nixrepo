@@ -1,1 +1,0 @@
-/home/patrickaldis/.nixrepo/xdgconf/doom/packages.el

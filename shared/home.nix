@@ -15,7 +15,7 @@ in
     programs.spicetify = {
       enable = true;
       theme = "catppuccin-mocha";
-      # OR 
+      # OR
       # theme = spicetify-nix.pkgSets.${pkgs.system}.themes.catppuccin-mocha;
       colorScheme = "flamingo";
 
@@ -35,10 +35,24 @@ in
     programs.doom-emacs = {
       enable = true;
       doomPrivateDir = ../xdgconf/doom;
+      doomPackageDir = pkgs.linkFarm "doom-packages-dir" [
+        {
+          name = "init.el";
+          path = ../xdgconf/doom/init.el;
+        }
+        {
+          name = "packages.el";
+          path = ../xdgconf/doom/packages.el;
+        }
+        {
+          name = "config.el";
+          path = pkgs.emptyFile;
+        }
+      ];
       # doomPackageDir = ../xdgconf/doompkgs;
       # emacsPackages = pkgs.emacsPackagesFor (pkgs.emacs.override { withPgtk = true; });
     };
-  
+
     programs.firefox = {
       enable = true;
       package = pkgs.firefox.override {
@@ -52,13 +66,13 @@ in
         name = "CatppuccinFrappe";
       };
     };
-    
+
     programs.kitty = {
       enable = true;
       font.name = "JetBrains Mono Regular Nerd Font Complete Mono";
       settings =
         {
-          "confirm_os_window_close"= 0 ; 
+          "confirm_os_window_close"= 0 ;
         };
       theme = "Catppuccin-Frappe";
     };
