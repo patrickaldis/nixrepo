@@ -10,7 +10,9 @@
 (setq text-quoting-style "grave")
 (setq byte-compile-warnings nil)
 (setq doom-modeline-major-mode-icon t)
+
 (setq org-preview-latex-default-process 'dvisvgm)
+(setq org-directory "~/Documents/Notes")
 (defadvice org-export-output-file-name (before org-add-export-dir activate)
   "Modifies org-export to place exported files in a different directory"
   (when (not pub-dir)
