@@ -28,8 +28,6 @@ in
         "history.js"
         "genre.js"
       ];
-      enabledCustomApps = with spicetify-nix.pkgSets.${pkgs.system}.apps;
-        [marketplace];
     };
 
     programs.doom-emacs = {
