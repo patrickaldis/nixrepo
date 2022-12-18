@@ -12,7 +12,7 @@
       ./system.nix
       ./envpkgs.nix
     ];
-  
+
   #DEVICE CONFIGURATION
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["JetBrainsMono"]; })

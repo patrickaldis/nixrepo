@@ -23,5 +23,5 @@
     systemCronJobs = [
       "@reboot rm -r -f home/patrickaldis/Downloads/*"
     ];
-  }; 
+  };
 }
