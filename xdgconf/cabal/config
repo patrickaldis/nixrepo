@@ -109,7 +109,7 @@ jobs: $ncpus
 -- username:
 -- password:
 -- password-command:
--- builddir:
+builddir: build
 
 haddock
   -- keep-temp-files: False
