@@ -5,8 +5,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Patrick Aldis"
+      user-mail-address "patrick.aldis@virginmeda.com")
 (setq text-quoting-style "grave")
 (setq byte-compile-warnings nil)
 (setq doom-modeline-major-mode-icon t)
@@ -55,9 +55,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
 
 
 (after! lsp-ui
@@ -71,9 +68,8 @@
 (map! :after hydra
       :map evil-window-map
       :desc "open window hydra" "w" #'+hydra/window-nav/body)
-(map! :after lsp
-      :map doom-leader-code-map
-      :desc "Format Buffer/Line" "f" #'lsp-format-region)
+(map! :leader
+      :desc "Format buffer" "c f" #'lsp-format-buffer)
 (after! treemacs (treemacs-project-follow-mode))
 (after! treemacs (setq treemacs-show-cursor t))
 (map! :after treemacs
