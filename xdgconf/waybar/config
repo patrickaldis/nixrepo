@@ -59,7 +59,7 @@
         "on-click-middle": "blueberry",
     },
 	"custom/power": {
-		"format": "",
+		"format": "",
 		"on-click": "sh ~/.config/waybar/logout"
 	},
     "custom/scratchpad-indicator": {

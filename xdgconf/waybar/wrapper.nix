@@ -8,7 +8,7 @@
       ''
         * {
             border: none;
-            font-family: JetBrainsMono Nerd Font Mono;
+            font-family: JetBrainsMono Nerd Font;
         }
         body {
 
@@ -94,9 +94,9 @@
             background-color: #${theme.primary};
             color: #${theme.background};
             border-radius: 50px;
-            padding: 0px 7px;
+            padding: 0px 11px 0px 4px;
             font-size: 20px;
-            margin: 3px 3px;
+            margin: 3px 3px 3px 3px;
         }
         #custom-power:hover {
             color: #${theme.primary};
