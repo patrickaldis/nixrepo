@@ -11,6 +11,7 @@
 (package! treemacs-all-the-icons)
 (package! biblio)
 (package! biblio-core)
+(package! avy-flycheck)
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 

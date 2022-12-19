@@ -65,16 +65,15 @@
              ("begin" "$1" "$" "$$" "\\(" "\\["))
 
 ))
-(map! :after hydra
-      :map evil-window-map
-      :desc "open window hydra" "w" #'+hydra/window-nav/body)
 (map! :leader
-      :desc "Format buffer" "c f" #'lsp-format-buffer)
+      :desc "Format " "c f" #'lsp-format-buffer)
+(map! :after avy-flycheck
+      :desc "avy goto lens" :n "g s L" #'lsp-avy-lens
+      :desc "avy goto lens" :n "g s l" #'avy-goto-line
+      :desc "avy goto error" :n "g s e" #'avy-flycheck-goto-error)
+
 (after! treemacs (treemacs-project-follow-mode))
 (after! treemacs (setq treemacs-show-cursor t))
-(map! :after treemacs
-      :map doom-leader-open-map
-      :desc "open treemacs" "p" #'treemacs)
 
 ;;BIBLIO
   (after! citar
@@ -85,6 +84,7 @@
 (use-package! all-the-icons-completion :after vertico :config (all-the-icons-completion-mode))
 (use-package! treemacs-all-the-icons :after treemacs :config (setq doom-themes-treemacs-theme "all-the-icons"))
 (use-package! helm-icons :after helm :config (helm-icons-enable))
+(use-package! avy-flycheck :after avy)
 (after! whitespace
   (setq whitespace-style '(face tabs tab-mark spaces space-mark trailing lines-tail indentation))
   (global-whitespace-mode t))
