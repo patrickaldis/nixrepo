@@ -79,6 +79,7 @@ in
       foliate
       setzer
       nyxt
+      polychromatic
       ]
     ++
     (with inputs;
@@ -106,7 +107,7 @@ in
   programs.noisetorch.enable = true;
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall = true; 
+    remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
   programs.kdeconnect.enable = true;

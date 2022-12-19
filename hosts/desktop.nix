@@ -11,9 +11,12 @@
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
 
   networking.hostName = "nixos-desktop";
+
+  #OPENRAZER
+  boot.extraModulePackages = [pkgs.linuxKernel.packages.linux_xanmod_latest.openrazer];
+  hardware.openrazer.enable = true;
 
   #BOOTLOADER
   boot.loader.grub = {
