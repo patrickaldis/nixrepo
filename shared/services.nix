@@ -32,4 +32,6 @@
       };
 
     };
+  programs.dconf.enable = true;
+  programs.seahorse.enable = true;
 }
