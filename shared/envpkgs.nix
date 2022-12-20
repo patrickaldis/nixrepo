@@ -55,6 +55,7 @@ in
       ispell
 
       gnome.adwaita-icon-theme
+      adwaita-qt
 
       #GNOME
       gnomeExtensions.appindicator
