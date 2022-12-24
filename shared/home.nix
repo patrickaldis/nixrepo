@@ -14,6 +14,7 @@ in
 
     programs.spicetify = {
       enable = true;
+      spotifyPackage = pkgs.spotifywm;
       theme = "catppuccin-mocha";
       # OR
       # theme = spicetify-nix.pkgSets.${pkgs.system}.themes.catppuccin-mocha;

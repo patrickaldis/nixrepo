@@ -30,7 +30,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.patrickaldis = import ./shared/home.nix;
+            home-manager.users.patrickaldis = import ./home;
             home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
               [inputs
                {customSettings.hiDPI = true;}
@@ -53,7 +53,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.patrickaldis = import ./shared/home.nix;
+            home-manager.users.patrickaldis = import ./home;
             home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
               [inputs
                {customSettings.hiDPI = false;}
