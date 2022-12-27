@@ -19,52 +19,55 @@
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = { self, nixpkgs, hyprland, hyprcontrib, spicetify-nix, home-manager, nix-doom-emacs,...}@inputs: {
-    nixosConfigurations.nixosxps15 = nixpkgs.lib.nixosSystem {
-      system= "x86_64-linux";
-      modules = [
-        hyprland.nixosModules.default
-        { programs.hyprland.enable = true;
-        }
-        home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.patrickaldis = import ./home;
-            home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
-              [inputs
-               {customSettings.hiDPI = true;}
-               {theme = import ./shared/theme.nix;}
-              ]);
-          }
-        ./shared
-        ./hosts/xps9560.nix
-      ];
-      specialArgs.inputs = inputs;
-      specialArgs.customSettings.hiDPI = true;
-    };
-    nixosConfigurations.nixosdesktop = nixpkgs.lib.nixosSystem {
-      system= "x86_64-linux";
-      modules = [
-        hyprland.nixosModules.default
-        { programs.hyprland.enable = true;
-        }
-        home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.patrickaldis = import ./home;
-            home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
-              [inputs
-               {customSettings.hiDPI = false;}
-               {theme = import ./shared/theme.nix;}
-              ]);
-          }
-        ./shared
-        ./hosts/desktop.nix
-      ];
-      specialArgs.inputs = inputs;
-      specialArgs.customSettings.hiDPI = false;
-    };
-  };
+  outputs =
+    { self,
+      nixpkgs,
+      hyprland,
+      hyprcontrib,
+      spicetify-nix,
+      home-manager,
+      nix-doom-emacs,
+      ...}@inputs:
+    let
+      defaultSystem = {hostFile, customSettings}:
+        nixpkgs.lib.nixosSystem {
+          system= "x86_64-linux";
+          modules = [
+            hyprland.nixosModules.default
+            { programs.hyprland.enable = true;
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.patrickaldis = import ./home;
+              home-manager.extraSpecialArgs = nixpkgs.lib.mkMerge(
+                [inputs
+                 {customSettings = customSettings;}
+                 {theme = import ./shared/theme.nix;}
+                ]);
+            }
+            ./shared
+            hostFile
+          ];
+          specialArgs.inputs = inputs;
+          specialArgs.customSettings = customSettings;
+        };
+    in
+      {
+        nixosConfigurations.nixosxps15 = defaultSystem
+          ({
+            hostFile = ./hosts/xps9560.nix;
+            customSettings = {
+              hiDPI = true;
+            };
+          });
+        nixosConfigurations.nixosdesktop = defaultSystem
+          ({
+            hostFile = ./hosts/desktop.nix;
+            customSettings = {
+              hiDPI = false;
+            };
+          });
+      };
 }
