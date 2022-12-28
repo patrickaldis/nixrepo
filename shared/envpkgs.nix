@@ -63,6 +63,7 @@ in
       #APPLICATIONS
       spotify-unwrapped
       discord
+      firefox
       mailspring
       thunderbird
       lutris
