@@ -5,7 +5,7 @@
   ];
   programs.spicetify = {
     enable = true;
-    spotifyPackage = pkgs.spotifywm;
+    spotifyPackage = pkgs.spotify; # For some reason spictify only works with pkgs.spotify
     theme = "catppuccin-mocha";
     # OR
     # theme = spicetify-nix.pkgSets.${pkgs.system}.themes.catppuccin-mocha;
