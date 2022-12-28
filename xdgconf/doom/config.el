@@ -11,7 +11,7 @@
 (setq doom-theme 'doom-one)                     ;; Theme :)
 
 ;; FONTS
-(setq fontsize 28)
+;; (setq fontsize -?-) - font size is now set by nix
 (setq doom-font                                 ;; Monospaced Font
       (font-spec :family "JetBrainsMono Nerd Font Mono"
                  :size fontsize))
