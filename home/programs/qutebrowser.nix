@@ -27,6 +27,8 @@
 
       downloads.remove_finished = 4000;
 
+      editor.command = ["kitty" "-e" "nvim" "-f" "{file}" "-c" "normal {line}G{column0}l"];
+
       colors = {
 
         downloads = {
