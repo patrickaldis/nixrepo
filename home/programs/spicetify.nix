@@ -8,7 +8,7 @@ in
   ];
   programs.spicetify = {
     enable = true;
-    spotifyPackage = pkgs.spotifywm; # For some reason spictify only works with pkgs.spotify
+    spotifyPackage = pkgs.spotify; # For some reason spictify only works with pkgs.spotify
     theme = spicePkgs.themes.catppuccin-mocha;
     colorScheme = "flamingo";
 
