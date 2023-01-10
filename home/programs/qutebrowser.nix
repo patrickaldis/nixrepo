@@ -24,6 +24,7 @@
       };
 
       content.javascript.can_access_clipboard = true;
+      content.fullscreen.window = true;
 
       downloads.remove_finished = 4000;
 
